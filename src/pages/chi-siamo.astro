@@ -1,0 +1,889 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+async function fetchTeams() {
+  const url = `${import.meta.env.URL_TOKEN}/api/teams?populate=*`;
+  console.log(url);
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.AUTH_TOKEN}`
+    }
+  });
+  const data = await response.json();
+  return data.data;
+}
+const teams = await fetchTeams();
+---
+
+<Layout title="asd" description="asd">
+  <section class="p-body pt-[2.5vw]" id="content">
+    <!--?php include 'includes/header.php'?-->
+    <div class="lg:mt-[10.194vw] mt-[75px] flex flex-col h-[60vh] lg:h-[100vh] justify-center relative">
+      <p class="text-bianco text-[20.833vw] -tracking-[0.625vw] font-[700] text-center z-10 ciao absolute leading-[27.778vw] -top-[5vw] left-0 right-0">ciao</p>
+      <div class="rounded-[1.667vw] w-full absolute top-[14vw]" id="box-ciao"></div>
+    </div>
+    <div class="flex flex-col lg:flex-row items-end justify-between gap-[150px] lg:gap-[100px]">
+      <div class="lg:order-1 order-2">
+        <p class="text-bianco font-[700] title">
+          siamo il tuo<br />
+          team creativo
+        </p>
+        <p class="text-bianco font-[300] mt-[24px] lg:mt-[1.667vw]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla. Eu mauris facilisi adipiscing diam faucibus fermentum. Luctus sem in vulputate nec lectus nisl vulputate fringilla in.</p>
+      </div>
+      <img src="img/assets/icon-vtb.svg" class="lg:w-[45.139vw] w-[266px] mr-auto ml-auto lg:-mt-[13.889vw] lg:mr-[3.056vw] z-30 vtb order-1 lg:order-2" alt="" />
+    </div>
+  </section>
+
+  <section class="p-body flex flex-row gap-[11px] lg:gap-[1.389vw] pt-[100px] pb-[150px] lg:py-[10.417vw]" id="list-about">
+    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
+  </section>
+
+  <section class="p-body pb-[10.194vw]">
+    <p class="lg:text-[3.056vw] text-[32px] lg:leading-[3.333vw] leading-[36px] text-bianco font-[400] text-center" id="text-emote">
+      Questo è uno spazio per scrivere una frase<br />
+      emozionale, magari in merito alla nostra<br />
+      filosofia, al modo di fare “demia” e non la farei<br />
+      superiore alle quattro righe.
+    </p>
+  </section>
+
+  <section class="px-[13.889vw] py-[10.194vw]" id="text-dontquit">
+    <p class="text-[#2d2d2d] text-[20.833vw] leading-[21.111vw] font-[800]">
+      <span>do</span>n't
+    </p>
+    <p class="text-[#2d2d2d] text-[20.833vw] leading-[21.111vw] font-[800] text-center pb-[10.194vw]">
+      qu<span>it</span>
+    </p>
+  </section>
+
+  <section class="p-body py-[150px] lg:py-[10.194vw] bg-bianco">
+    <p class="text-nero font-[700] title">
+      in questo spazio <img src="img/page/about/icon-valori.png" alt="" class="w-[10.347vw] relative -top-[0.972vw] hidden" />
+      <br class="hidden lg:block" />
+      si dovrà <span class="text-sfumatura">parlare di valori</span><br class="hidden lg:block" />
+      di demia va bene?
+    </p>
+    <div class="border-nero border-[0.069vw] my-[6.944vw]"></div>
+    <div class="flex flex-col lg:flex-row justify-between">
+      <p class="lg:text-[3.056vw] text-[32px] lg:leading-[3.333vw] leading-[36px] text-nero font-[400]">
+        Lorem ipsum dolor sit amet<br class="hidden lg:block" />
+        consectetur. Turpis non vulputate<br class="hidden lg:block" />
+        consequat odio in ultrices.
+      </p>
+      <p class="text-nero mt-[24px] lg:mt-0">
+        Lorem ipsum dolor sit amet consectetur.<br />
+        Turpis non vulputate consequat odio in<br />
+        ultrices. Eget porta scelerisque eros orci<br />
+        eget dictum metus aliquam nulla.
+      </p>
+    </div>
+    <div class="hidden lg:block">
+      <div class="mt-[10.194vw] flex flex-row gap-[0.694vw]">
+        <div class="w-1/3 flex flex-col justify-between p-[3.056vw] rounded-[1.667vw] bg-grigio h-[34.722vw] group hover:shadow-linea-magenta transition-all">
+          <p class="text-nero text-[2.222vw] font-[700] leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] group-hover:text-magenta">
+            curare il<br />
+            brand
+          </p>
+          <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+        </div>
+        <div class="w-1/3 flex flex-col justify-between p-[3.056vw] rounded-[1.667vw] bg-grigio h-[34.722vw] group hover:shadow-linea-arancio transition-all">
+          <p class="text-nero text-[2.222vw] font-[700] leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] group-hover:text-arancio">
+            perchè fidarsi<br />
+            di noi
+          </p>
+          <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+        </div>
+        <div class="w-1/3 flex flex-col justify-between p-[3.056vw] rounded-[1.667vw] bg-grigio h-[34.722vw] group hover:shadow-linea-giallo transition-all">
+          <p class="text-nero text-[2.222vw] font-[700] leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] group-hover:text-giallo">
+            perchè fare<br />
+            comunicazione
+          </p>
+          <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+        </div>
+      </div>
+    </div>
+    <div class="block lg:hidden">
+      <div class="swiper swiper-task mt-[60px]">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="w-full flex flex-col justify-between p-[24px] lg:p-[3.056vw] rounded-[16px] lg:rounded-[1.667vw] bg-grigio lg:h-[34.722vw] shadow-linea-magenta transition-all gap-[100px]">
+              <p class="text-[24px] lg:text-[2.222vw] font-[700] leading-[28px] lg:leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] text-magenta">
+                curare il<br />
+                brand
+              </p>
+              <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="w-full flex flex-col justify-between p-[24px] lg:p-[3.056vw] rounded-[16px] lg:rounded-[1.667vw] bg-grigio lg:h-[34.722vw] shadow-linea-arancio transition-all gap-[100px]">
+              <p class="text-[24px] lg:text-[2.222vw] font-[700] leading-[28px] lg:leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] text-arancio">
+                perchè fidarsi<br />
+                di noi
+              </p>
+              <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="w-full flex flex-col justify-between p-[24px] lg:p-[3.056vw] rounded-[16px] lg:rounded-[1.667vw] bg-grigio lg:h-[34.722vw] shadow-linea-giallo transition-all gap-[100px]">
+              <p class="text-[24px] lg:text-[2.222vw] font-[700] leading-[28px] lg:leading-[2.5vw] -tracking-[0.067vw] mt-[3.056vw] text-giallo">
+                perchè fare<br />
+                comunicazione
+              </p>
+              <p class="mb-[3.056vw] text-nero">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="p-body py-[150px] lg:py-[10.417vw]">
+    <p class="lg:text-[3.056vw] text-[32px] lg:leading-[3.333vw] leading-[36px] text-bianco font-[400] text-center" id="text-emote-2">
+      Questo è uno spazio per scrivere una frase<br />
+      emozionale, magari in merito alla nostra<br />
+      filosofia, al modo di fare “demia” e non la farei<br />
+      superiore alle quattro righe.
+    </p>
+  </div>
+
+  <div class="flex h-full flex-row flex-nowrap w-full relative" id="hor">
+    <div class="bg-nero h-full w-full panel2 relative">
+      <div class="absolute bg-mandarino w-[320px] h-[360px] top-0 left-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-0 right-[40px]"></div>
+      <div class="absolute bg-giallo w-[400px] h-[200px] top-[150px] right-[240px]"></div>
+      <div class="absolute bg-rosso w-[400px] h-[200px] bottom-[200px] left-[40px]"></div>
+    </div>o
+    <div class="bg-nero h-full w-full panel2">
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-0 left-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-0 right-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-[150px] left-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] bottom-0 left-[40px]"></div>
+    </div>
+    <div class="bg-nero h-full w-full panel2">
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-0 left-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-0 right-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] top-[150px] left-[40px]"></div>
+      <div class="absolute bg-magenta w-[400px] h-[200px] bottom-0 left-[40px]"></div>
+    </div>
+    <div id="yearDisplay" class="year-display text-[20.833vw] leading-[20.833vw] -tracking-[0.625vw] font-[700] -translate-y-2/4">2013</div>
+  </div>
+
+  <section class="p-body py-[150px] lg:py-[10.417vw]">
+    <div class="flex flex-row justify-between border-bianco lg:border-b-[0.139vw] border-b-[1px] pb-[8px] lg:pb-[0.833vw]">
+      <p class="text-bianco font-[700]">talenti appassionati</p>
+      <div class="flex flex-row gap-[0.833vw]">
+        <p class="text-bianco font-[700]">
+          <span class="text hover-target">la nostra squadra</span>
+        </p>
+      </div>
+    </div>
+    <p class="text-bianco text-[20.833vw] leading-[21.111vw] font-[700] text-center py-[100px] lg:py-[10.417vw]">team</p>
+    <div class="lg:pb-[10.417vw]">
+      <div class="flex flex-col lg:flex-row items-end justify-between gap-[24px] lg:gap-[20.833vw]">
+        <p class="text-bianco font-[700] title-small lg:w-1/2">Qui immagino una breve descrizione che introduca al team. Deve essere un’introduzione e non superare le 4 righe.</p>
+        <p class="text-bianco font-[300] lg:w-1/2 mb-[100px] lg:mb-0">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla. Eu mauris facilisi adipiscing diam faucibus fermentum. Luctus sem in vulputate nec lectus nisl vulputate fringilla in.</p>
+      </div>
+    </div>
+
+    <div class="gap-x-[0.694vw] gap-y-[100px] lg:gap-y-[10.417vw] grid lg:grid-cols-3 grid-cols-1">
+      {
+        teams.length ? (
+          teams.map((team) => (
+            <div class="box-team" id={`member-${team.id}`}>
+              <div class="team" id={team.id}>
+                <video class="team-video" src={`${import.meta.env.URL_TOKEN}${team.Video.url}`} muted playsinline loop preload="metadata" />
+              </div>
+              <div class="mt-[24px] lg:mt-[2.222vw]">
+                <p class="name">{team.Nome}</p>
+                <p class="role">{team.posizione_lavorativa}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Nessun progetto trovato.</p>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Popup -->
+  <div class="popteam hidden" id="teamPopup" data-lenis-prevent>
+    <div class="w-full marquee bg-sfumatura py-[24px] lg:py-[2.5vw] rounded-ss-[16px] lg:rounded-ss-[1.667vw] sticky top-0">
+      <div class="marquee-text marquee-team flex flex-row">
+        <p class="text-bianco font-[600]">il tuo team creativo</p>
+        <p class="text-bianco font-[600]">il tuo team creativo</p>
+        <p class="text-bianco font-[600]">il tuo team creativo</p>
+      </div>
+    </div>
+    <div class="popteam-content py-[44px] lg:py-[6.944vw] px-[16px] lg:px-[3.611vw] overflow-scroll">
+      <p id="popupName" class="text-bianco font-[700] text-[36px] lg:text-[4.5vw] leading-[48px] lg:leading-[4.5vw] -tracking-[1.32px] lg:-tracking-[0.15vw]"></p>
+      <p id="popupRole" class="text-bianco font-[300] text-[16px] lg:text-[1.667vw] leading-[24px] lg:leading-[1.944vw] -tracking-[0.6px] lg:-tracking-[0.05vw] mt-[4px] lg:mt-[0.278vw]"></p>
+      <div class="my-[44px] lg:my-[3.056vw]">
+        <video class="team-video" src="video/home-portfolio/alpipan.mp4" playsinline autoplay muted loop preload="metadata" id="popupvideo"></video>
+      </div>
+      <p id="popupDescription" class="text-bianco text-[32px] lg:text-[3.056vw] font-[300] leading-[36px] lg:leading-[3.333vw] -tracking-[0.96px] lg:-tracking-[0.092vw]"></p>
+      <div class="flex flex-row items-center justify-between mt-[24px] lg:mt-[1.667vw]">
+        <p id="popupDescription2" class="text-bianco font-[300] lg:w-1/2 text-[16px] lg:text-[1.111vw]"></p>
+        <p id="popemoji" class="text-[50px] lg:text-[4.069vw]">🤙</p>
+      </div>
+    </div>
+    <span class="fixed top-5 flex items-center justify-center -left-[20%] lg:-left-[15%] cursor-pointer bg-[#ffffff36] backdrop-blur-xl text-bianco text-center rounded-[100%] lg:h-[5.208vw] h-[55px] lg:w-[5.208vw] w-[55px]" id="closePopup"><img src="img/assets/icon-close.svg" class="w-[20px]" /></span>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="hidden"></div>
+
+  <section class="flex flex-col items-center">
+    <h3 class="text-bianco font-[700] title-small text-center">è il tuo momento</h3>
+    <div class="bg-[#333] border-[#16181C] border-2 w-[94px] lg:w-[9.722vw] h-[46px] lg:h-[4.861vw] rounded-[100px] relative mt-[21px] lg:mt-[2.222vw] transition-[400]" id="onair">
+      <div class="bg-[#333] drop-shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-[#16181C] border-2 h-[46px] lg:h-[4.861vw] w-[46px] lg:w-[4.861vw] rounded-[100px] absolute -left-[2px] -top-[2px]" id="circle-onair"></div>
+    </div>
+    <div class="pt-[67px] lg:pt-[6.944vw] pb-[10.417vw] relative">
+      <img src="img/assets/onair.svg" alt="" class="opacity-15" id="imgonair" />
+      <div class="flex flex-row top-[51%] lg:top-[46%] justify-center mx-auto left-0 right-0 -rotate-[17deg] -translate-y-1/2 absolute">
+        <div class="bg-[#BCAE9E] w-[33px] lg:w-[50px] h-[19px] lg:h-[27px]"></div>
+        <div class="h-[19px] lg:h-[27px] w-[63%] lg:w-[90%] bg-[#695F64] shadow-inner shadow-ledoff" id="ledonair"></div>
+        <div class="bg-[#BCAE9E] w-[33px] lg:w-[50px] h-[19px] lg:h-[27px] shadw"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex flex-col lg:flex-row p-body justify-between">
+    <div>
+      <p class="text-bianco font-[700] title">
+        ti piacerebbe<br class="hidden lg:block" />
+        lavorare con<br class="lg:hidden block" /> noi?
+      </p>
+    </div>
+    <div class="mt-[100px] lg:mt-0">
+      <p class="text-[28px] lg:text-[3.056vw] leading-[32px] lg:leading-[3.333vw] text-bianco">
+        invia una mail<br class="lg:hidden block" /> con il tuo cv a<br />
+        <a href="mailto:candidature@demia.org" class="text-sfumatura font-[700]">candidature@demia.org</a>
+      </p>
+      <p class="text-bianco mt-[24px] lg:mt-[2.222vw]">
+        Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat<br class="hidden lg:block" />
+        odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam<br class="hidden lg:block" />
+        nulla.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-[16px] lg:mx-[2.222vw] mt-[100px] lg:mt-[10.417vw] mb-[100px] lg:mb-0 rounded-[16px] lg:rounded-[1.667vw" id="lavora-con-noi"></div>
+
+  <script>
+    // Fetch dei dati
+    fetch(`${import.meta.env.URL_TOKEN}/teams?populate=*`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.AUTH_TOKEN}`
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched team data:", data); // Debug: Check fetched team data
+
+        // Sort the team data by the `Order` property
+        const sortedData = data.data.sort((a, b) => a.Order - b.Order);
+        console.log("Sorted team data:", sortedData); // Debug: Check sorted team data
+
+        const teamContainer = document.getElementById("team-container");
+
+        sortedData.forEach((member) => {
+          console.log(`Processing member: ${member.Nome} with Order: ${member.Order}`, member); // Debug: Log each member's data
+          const memberDiv = document.createElement("div");
+          memberDiv.className = "box-team";
+          memberDiv.id = `member-${member.id}`;
+
+          memberDiv.innerHTML = `
+                    <div class="team" id="${member.documentId}">
+                        <video class="team-video" src="https://strapi.demia.org${member.Video.url}" muted defaultMuted playsinline loop preload="metadata"></video>
+                    </div>
+                    <div class="mt-[24px] lg:mt-[2.222vw]">
+                        <p class="name">${member.Nome.toLowerCase()}</p>
+                        <p class="role">${member.posizione_lavorativa.toLowerCase()}</p>
+                    </div>
+                `;
+
+          memberDiv.addEventListener("click", () => {
+            console.log(`Clicked on member: ${member.Nome} with Order: ${member.Order}`); // Debug: Log click event
+            openPopup(member.Nome);
+          });
+
+          teamContainer.appendChild(memberDiv);
+        });
+      })
+      .catch((error) => console.error("Error fetching team data:", error));
+
+    // Function to open the popup with dynamic data for each team member by name
+    function openPopup(memberName) {
+      console.log(`Opening popup for member: ${memberName}`); // Debug: Log popup opening
+      disableLenis();
+
+      // Fetch data for the specific team member using their name
+      fetch(`${import.meta.env.URL_TOKEN}/teams?filters[Nome][$eq]=${encodeURIComponent(memberName)}&populate=*`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${import.meta.env.AUTH_TOKEN}`
+        }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Fetched member data for popup:", data); // Debug: Check data for selected member
+          const member = data.data[0]; // Assuming the name is unique, take the first result
+
+          if (member) {
+            document.getElementById("popupName").innerText = member.Nome;
+            document.getElementById("popupRole").innerText = member.posizione_lavorativa;
+            document.getElementById("popupDescription").innerText = member.Descrizione_corta;
+            document.getElementById("popupDescription2").innerText = member.descrizione_lunga;
+            document.getElementById("popemoji").innerText = member.Emoji;
+            document.getElementById("popupvideo").src = `https://strapi.demia.org${member.Video.url}`;
+
+            const popup = document.getElementById("teamPopup");
+            const overlay = document.getElementById("overlay");
+            overlay.classList.remove("hidden");
+            popup.classList.remove("hidden");
+            document.body.classList.add("popup-open");
+
+            setTimeout(() => {
+              overlay.classList.add("show");
+              popup.classList.add("active");
+              console.log("Popup opened and animations started."); // Debug: Popup animation confirmation
+            }, 10);
+          } else {
+            console.warn("Member data not found for name:", memberName); // Debug: Warn if no member data
+          }
+        })
+        .catch((error) => console.error("Error fetching member data for popup:", error));
+    }
+
+    // Function to close the popup
+    function closePopup() {
+      console.log("Closing popup"); // Debug: Log popup closing
+      enableLenis();
+      const popup = document.getElementById("teamPopup");
+      const overlay = document.getElementById("overlay");
+
+      popup.classList.remove("active");
+      overlay.classList.remove("show");
+
+      setTimeout(() => {
+        popup.classList.add("hidden");
+        overlay.classList.add("hidden");
+        document.body.classList.remove("popup-open");
+        console.log("Popup closed and hidden"); // Debug: Popup fully closed confirmation
+      }, 300);
+    }
+
+    // Listeners to close the popup
+    document.getElementById("closePopup").addEventListener("click", closePopup);
+    document.getElementById("overlay").addEventListener("click", closePopup);
+  </script>
+
+  <!-- ANIMAZIONE TESTO CIAO -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const splitText = new SplitType(".ciao", { types: "chars" });
+
+    // Avvolgiamo ogni carattere in un contenitore con overflow hidden
+    splitText.chars.forEach((char) => {
+      const wrapper = document.createElement("div");
+      wrapper.style.overflow = "hidden"; // Nasconde il carattere finché non emerge
+      wrapper.style.display = "inline-block"; // Mantiene il carattere inline
+      char.parentNode.insertBefore(wrapper, char); // Inserisce il wrapper nel DOM
+      wrapper.appendChild(char); // Inserisce il carattere all'interno del wrapper
+    });
+
+    // Creiamo l'animazione per i caratteri che emergono dal basso
+    gsap.fromTo(
+      splitText.chars,
+      { translateY: "100%" }, // Inizio: i caratteri partono fuori dalla vista, nascosti dal wrapper
+      {
+        translateY: "0%", // I caratteri si muovono verso la posizione originale
+        duration: 0.8, // Durata breve per ogni carattere
+        ease: "power4.out", // Movimento fluido
+        delay: 0.5,
+        stagger: 0.05, // Ritardo tra l'animazione di ogni carattere per creare l'effetto "onda"
+        scrollTrigger: {
+          trigger: "body", // Trigger generale per l'intero testo
+          start: "top 200px", // Inizio quando il testo entra nell'80% della viewport
+          toggleActions: "play reverse play reverse" // Anima in reverse quando esce dalla viewport
+        }
+      }
+    );
+  </script>
+
+  <!-- EFFETTO HOVER PULSANTE  -->
+  <script>
+    $(function () {
+      $(".big-button")
+        .on("mouseenter", function (e) {
+          var parentOffset = $(this).offset(),
+            relX = e.pageX - parentOffset.left,
+            relY = e.pageY - parentOffset.top;
+          $(this).find("span").css({ top: relY, left: relX });
+        })
+        .on("mouseout", function (e) {
+          var parentOffset = $(this).offset(),
+            relX = e.pageX - parentOffset.left,
+            relY = e.pageY - parentOffset.top;
+          $(this).find("span").css({ top: relY, left: relX });
+        });
+    });
+  </script>
+
+  <!-- ANIMAZIONE VTB -->
+  <script>
+    const tl = gsap.timeline();
+    // Applica un'animazione di scaling da 0 a 1
+    tl.fromTo(
+      "#box-ciao",
+      { scale: 0, opacity: 0 }, // Stato iniziale: scalato a 0
+      { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out", delay: 1 } // Stato finale: scala a 1 in 1.5 secondi
+    )
+
+      .fromTo(
+        ".vtb",
+        { opacity: 0 },
+        { opacity: 1, duration: 3, ease: "power3.out" },
+        "+=0" // Avvia subito dopo la prima animazione
+      );
+  </script>
+
+  <!-- ANIMAZIONE IMMAGINI -->
+  <script>
+    ScrollTrigger.matchMedia({
+      // Configurazione per desktop (larghezza >= 768px)
+      "(min-width: 768px)": function () {
+        gsap.to("#list-about", {
+          xPercent: -130, // Sposta l'elemento a sinistra
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#list-about", // Trigger principale
+            start: "top top", // Inizio quando #list-about è in cima alla viewport
+            end: "bottom", // Fine alla fine dell'elemento
+            scrub: true, // Sincronizza con lo scroll
+            pin: true, // Fissa l'elemento
+            pinSpacing: true, // Mantiene lo spazio durante il pin
+            anticipatePin: 1, // Anticipa l'effetto pin
+            invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
+            onUpdate: (self) => {
+              gsap.ticker.lagSmoothing(1000, 16); // Minimizza lag durante scroll rapidi
+            }
+          }
+        });
+      },
+
+      // Configurazione per mobile (larghezza < 768px)
+      "(max-width: 767px)": function () {
+        gsap.to("#list-about", {
+          xPercent: -200, // Riduce il movimento per mobile
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#list-about", // Trigger principale
+            start: "top top", // Inizio alla cima della viewport
+            end: "bottom+=200", // Estende la durata per un'esperienza più fluida
+            scrub: true, // Sincronizza con lo scroll
+            pin: true, // Fissa l'elemento
+            pinSpacing: true, // Rimuove spazio extra per mobile
+            anticipatePin: 0.5, // Riduce l'anticipazione per prestazioni migliori
+            invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
+            onUpdate: (self) => {
+              gsap.ticker.lagSmoothing(500, 16); // Ottimizza per scroll più rapidi
+            }
+          }
+        });
+      }
+    });
+
+    // Forza un refresh di GSAP dopo il caricamento della pagina
+    window.addEventListener("load", () => {
+      ScrollTrigger.refresh(); // Ricalcola le posizioni
+    });
+  </script>
+
+  <!-- ANIAMZIONE PARAGRAFO -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Suddividi manualmente il testo in linee
+      const textElement = document.getElementById("text-emote");
+      const text = textElement.innerHTML;
+      const lines = text.split("<br>");
+
+      // Sostituisci il contenuto con gli span per le linee
+      textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
+
+      // Seleziona le linee suddivise
+      const lineElements = document.querySelectorAll("#text-emote .line");
+
+      // Animazione GSAP
+      gsap.fromTo(
+        lineElements,
+        {
+          y: 50,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: "power4.inOut",
+          scrollTrigger: {
+            trigger: "#text-emote",
+            start: "top 80%",
+            end: "bottom center",
+            scrub: true,
+            toggleActions: "play reverse play reverse"
+          }
+        }
+      );
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Suddividi manualmente il testo in linee
+      const textElement = document.getElementById("text-emote-2");
+      const text = textElement.innerHTML;
+      const lines = text.split("<br>");
+
+      // Sostituisci il contenuto con gli span per le linee
+      textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
+
+      // Seleziona le linee suddivise
+      const lineElements = document.querySelectorAll("#text-emote-2 .line");
+
+      // Animazione GSAP
+      gsap.fromTo(
+        lineElements,
+        {
+          y: 50,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.1,
+          ease: "power4.inOut",
+          scrollTrigger: {
+            trigger: "#text-emote-2",
+            start: "top 80%",
+            end: "bottom center",
+            scrub: true,
+            toggleActions: "play reverse play reverse"
+          }
+        }
+      );
+    });
+  </script>
+
+  <!-- ANIMAZIONE DON'T QUIT -->
+  <script>
+    // Applica l'animazione quando il blocco diventa visibile con delay di 1 secondo
+    gsap.from("#text-dontquit", {
+      scrollTrigger: {
+        trigger: "#text-dontquit",
+        start: "top 80%", // Quando il blocco è visibile all'80% nella viewport
+        toggleActions: "play reverse play reverse", // Aggiunge e rimuove la classe durante l'entrata e l'uscita
+        onEnter: () => {
+          setTimeout(() => {
+            document.querySelectorAll("#text-dontquit span").forEach((span) => {
+              span.classList.add("text-sfumatura");
+              span.classList.add("saturate-[1.3]");
+            });
+          }, 1000); // Delay di 1 secondo
+        },
+        onLeaveBack: () => {
+          // Rimuove la classe quando si scrolla indietro
+          document.querySelectorAll("#text-dontquit span").forEach((span) => {
+            span.classList.remove("text-sfumatura");
+          });
+        }
+      }
+    });
+  </script>
+
+  <!-- ANIMAZIONE TIMELINE -->
+  <script>
+    // Seleziona le sezioni orizzontali
+    let sections = gsap.utils.toArray(".panel2");
+    let scrollDistance = 5000; // Durata complessiva dello scroll per questa sezione
+
+    // Seleziona l'elemento che mostrerà l'anno
+    let yearDisplay = document.getElementById("yearDisplay");
+
+    // Calcolo del valore delle ultime due cifre
+    let startYear = 2013;
+    let endYear = 2024;
+    let totalYears = endYear - startYear;
+
+    // Animazione dello scroll orizzontale delle sezioni
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#hor",
+        start: "top top",
+        end: `+=${scrollDistance}`,
+        scrub: 0.1,
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          // Calcola la progressione del valore
+          let progress = self.progress;
+          let currentYear = Math.floor(startYear + progress * totalYears);
+
+          // Controlla se l'anno è cambiato
+          if (yearDisplay.textContent != currentYear) {
+            // Se l'anno è diverso, anima il movimento verso l'alto
+            gsap.fromTo(
+              yearDisplay,
+              {
+                y: 300, // Inizia da sotto
+                opacity: 0
+              },
+              {
+                y: 0, // Si sposta al centro
+                opacity: 1,
+                duration: 0.5, // Durata dell'animazione
+                ease: "power4.out" // Effetto di uscita fluido
+              }
+            );
+
+            // Aggiorna il contenuto del div con il nuovo anno
+            yearDisplay.textContent = currentYear;
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- ANIMAZIONE MARQUEE -->
+  <script>
+    setTimeout(() => {
+      // Selezioniamo il contenitore del testo
+      const marqueeTeam = document.querySelector(".marquee-team");
+
+      // Duplicazione del contenuto per l'effetto infinito
+      marqueeTeam.innerHTML += marqueeTeam.innerHTML;
+
+      // Animazione GSAP
+      gsap.to(".marquee-team", {
+        xPercent: -50, // Sposta di metà del contenuto duplicato
+        ease: "none", // Mantiene un movimento fluido e costante
+        repeat: -1, // Ripete all'infinito
+        duration: 20 // Durata, puoi regolare in base alla velocità desiderata
+      });
+    }, 2000);
+  </script>
+
+  <!-- ANIMAZIONE TEAM CARDS POPUP -->
+  <!-- <script>
+        // Funzione per aprire il popup con i dati dinamici (nessuna modifica necessaria qui)
+        function openPopup(id) {
+            const member = teamData[id];
+            disableLenis();
+            if (member) {
+                document.getElementById('popupName').innerText = member.name;
+                document.getElementById('popupRole').innerText = member.role;
+                document.getElementById('popupDescription').innerText = member.description;
+                document.getElementById('popupDescription2').innerText = member.description2;
+                document.getElementById('popemoji').innerText = member.emoji;
+                document.getElementById('popupvideo').src = member.video;
+
+                const popup = document.getElementById('teamPopup');
+                const overlay = document.getElementById('overlay');
+                overlay.classList.remove('hidden');
+                popup.classList.remove('hidden');
+                document.body.classList.add('popup-open');
+
+                setTimeout(() => {
+                    overlay.classList.add('show');
+                    popup.classList.add('active');
+                }, 10);
+            }
+        }
+
+        // Funzione per chiudere il popup
+        function closePopup() {
+            enableLenis();
+            const popup = document.getElementById('teamPopup');
+            const overlay = document.getElementById('overlay');
+
+            popup.classList.remove('active');
+            overlay.classList.remove('show');
+
+            setTimeout(() => {
+                popup.classList.add('hidden');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('popup-open');
+            }, 300);
+        }
+
+        // Aggiungi gli event listener ai membri del team per aprire i popup (già implementato)
+        document.getElementById('danielcosci').addEventListener('click', function() {
+            openPopup('danielcosci');
+        });
+        document.getElementById('elenacastellacci').addEventListener('click', function() {
+            openPopup('elenacastellacci');
+        });
+        document.getElementById('diegoricci').addEventListener('click', function() {
+            openPopup('diegoricci');
+        });
+        document.getElementById('danieleandreotti').addEventListener('click', function() {
+            openPopup('danieleandreotti');
+        });
+        document.getElementById('federicarizzo').addEventListener('click', function() {
+            openPopup('federicarizzo');
+        });
+        document.getElementById('alessioconsoloni').addEventListener('click', function() {
+            openPopup('alessioconsoloni');
+        });
+        document.getElementById('brunosimonini').addEventListener('click', function() {
+            openPopup('brunosimonini');
+        });
+        document.getElementById('davidemancino').addEventListener('click', function() {
+            openPopup('davidemancino');
+        });
+        document.getElementById('carlottamannini').addEventListener('click', function() {
+            openPopup('carlottamannini');
+        });
+        document.getElementById('rusiruattanayaka').addEventListener('click', function() {
+            openPopup('rusiruattanayaka');
+        });
+        document.getElementById('dilettafruzzetti').addEventListener('click', function() {
+            openPopup('dilettafruzzetti');
+        });
+        document.getElementById('martascaravilli').addEventListener('click', function() {
+            openPopup('martascaravilli');
+        });
+
+        // Listener per chiudere il popup (già implementato)
+        document.getElementById('closePopup').addEventListener('click', closePopup);
+        document.getElementById('overlay').addEventListener('click', closePopup);
+    </script> -->
+
+  <!-- ANIMAZIONE AUTOSTART VIDEO -->
+  <script>
+    setTimeout(() => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Funzione per far partire i video
+      function playVideosInRow(row) {
+        const videos = row.querySelectorAll(".team-video");
+        videos.forEach((video) => {
+          video.play();
+        });
+      }
+
+      // Funzione per fermare i video
+      function pauseVideosInRow(row) {
+        const videos = row.querySelectorAll(".team-video");
+        videos.forEach((video) => {
+          video.pause();
+          video.currentTime = 0; // Resetta il video all'inizio
+        });
+      }
+
+      // Seleziona tutte le righe
+      const rows = document.querySelectorAll(".box-team");
+
+      rows.forEach((row, index) => {
+        ScrollTrigger.create({
+          trigger: row,
+          start: "top 50%", // Quando la riga entra nella viewport
+          end: "bottom 20%", // Quando la riga esce dalla viewport
+          onEnter: () => {
+            playVideosInRow(row);
+          },
+          onLeave: () => {
+            pauseVideosInRow(row);
+          },
+          onEnterBack: () => {
+            playVideosInRow(row);
+          },
+          onLeaveBack: () => {
+            pauseVideosInRow(row);
+          }
+        });
+      });
+    }, 2000);
+  </script>
+
+  <!-- FORZATURA SCROLL TEAM -->
+  <script>
+    // Funzione per forzare lo scroll su un elemento specifico
+    function forceScrollOnElement(className) {
+      const scrollElement = document.querySelector(className);
+
+      if (!scrollElement) return; // Esce se l'elemento non è trovato
+
+      // Aggiungi un listener per l'evento di scroll
+      scrollElement.addEventListener("wheel", function (event) {
+        // Impedisce lo scroll del body
+        event.preventDefault();
+
+        // Scrolla l'elemento stesso, dando priorità allo scroll verticale
+        scrollElement.scrollTop += event.deltaY;
+      });
+
+      // Aggiungi un listener per il tocco su dispositivi mobili
+      scrollElement.addEventListener("touchmove", function (event) {
+        event.preventDefault();
+        scrollElement.scrollTop += event.touches[0].clientY;
+      });
+    }
+
+    // Attiva lo scroll forzato sull'elemento con la classe ".popteam-content"
+    forceScrollOnElement(".popteam-content");
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      forceScrollOnElement(".popteam-content");
+    });
+  </script>
+
+  <!-- INTERAZIONE CON LED ONAIR -->
+  <script>
+    const myElement = document.getElementById("onair");
+    const circleonair = document.getElementById("circle-onair");
+    const imgonair = document.getElementById("imgonair");
+    const ledonair = document.getElementById("ledonair");
+
+    myElement.addEventListener("click", function () {
+      circleonair.classList.toggle("bg-sfumatura");
+      circleonair.classList.toggle("move-right");
+      imgonair.classList.toggle("opacity-15");
+      ledonair.classList.toggle("bg-[#FB72BD]");
+      ledonair.classList.toggle("shadow-ledon");
+      ledonair.classList.toggle("shadow-ledoff");
+      ledonair.classList.toggle("flicker");
+    });
+  </script>
+
+  <script>
+    const swiper = new Swiper(".swiper-task", {
+      loop: false,
+      draggable: true,
+      breakpoints: {
+        0: {
+          spaceBetween: 16,
+          slidesPerView: 1.1
+        },
+        600: {
+          spaceBetween: 20,
+          slidesPerView: 3
+        },
+        1024: {
+          spaceBetween: 20,
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
+  <script src="../../public/libs/index.js"></script>
+</Layout>
