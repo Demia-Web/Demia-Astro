@@ -1,0 +1,21 @@
+<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="arrow-up-right" clip-path="url(#clip0_262_3140)">
+    <path id="Vector" d="M65 5L7 63" stroke="url(#paint0_linear_262_3140)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"/>
+    <path id="Vector_2" d="M64.6152 64.6154L5.38446 64.6154L5.38447 5.38461" stroke="url(#paint1_linear_262_3140)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear_262_3140" x1="65" y1="34" x2="7" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E6007E"/>
+      <stop offset="1" stop-color="#F9B000"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0 35 35" to="360 35 35" dur="2s" repeatCount="indefinite"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_262_3140" x1="64.6152" y1="35" x2="5.38447" y2="35" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E6007E"/>
+      <stop offset="1" stop-color="#F9B000"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" from="0 35 35" to="360 35 35" dur="2s" repeatCount="indefinite"/>
+    </linearGradient>
+    <clipPath id="clip0_262_3140">
+      <rect width="70" height="70" fill="white" transform="translate(70 70) rotate(-180)"/>
+    </clipPath>
+  </defs>
+</svg>
