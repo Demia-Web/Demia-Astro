@@ -2,6 +2,9 @@ import gsap from "gsap";
 
 import Lenis from "lenis";
 
+import gsap from "gsap";
+gsap.registerPlugin();
+
 document.addEventListener("astro:page-load", () => {
   const accordions = document.querySelectorAll(".accordion-item");
 
@@ -100,7 +103,7 @@ requestAnimationFrame(raf);
 
 // Listen for the scroll event and log the event data
 lenis.on("scroll", (e) => {
-  console.log(e);
+  // console.log(e);
 });
 
 var isLenisRunning = true; // Variabile di stato per tenere traccia di Lenis

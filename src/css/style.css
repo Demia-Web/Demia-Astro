@@ -187,11 +187,11 @@ header p {
 }
 
 .button-small {
-  @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[#ffffff40] gap-[0.556vw] py-[0.833vw] px-[1.389vw] inline-block dark:text-nero text-[0.972vw] leading-[0.972vw] -tracking-[0.039vw];
+  @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[#ffffff40] gap-[0.556vw] py-[0.833vw] px-[1.389vw] inline-block text-[0.972vw] leading-[0.972vw] -tracking-[0.039vw];
 }
 
 .card-servizi .button-small {
-  @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[rgba(0,0,0,0.10)] gap-[0.556vw] py-[0.833vw] px-[1.389vw] inline-block dark:text-nero text-[0.972vw] leading-[0.972vw] -tracking-[0.039vw];
+  @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[rgba(0,0,0,0.10)] gap-[0.556vw] py-[0.833vw] px-[1.389vw] inline-block  text-[0.972vw] leading-[0.972vw] -tracking-[0.039vw];
 }
 
 #video-home .video {
@@ -1188,11 +1188,11 @@ input[type="number"]:not(:placeholder-shown) + label {
   }
 
   .card-servizi .button-small {
-    @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[rgba(0,0,0,0.10)] gap-[4px] py-[12px] px-[20px] inline-block dark:text-nero text-[12px] leading-[12px] -tracking-[0.36px];
+    @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[rgba(0,0,0,0.10)] gap-[4px] py-[12px] px-[20px] inline-block text-[12px] leading-[12px] -tracking-[0.36px];
   }
 
   .button-small {
-    @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[#ffffff40] gap-[4px] py-[12px] px-[20px] inline-block dark:text-nero text-[12px] leading-[12px] -tracking-[0.36px];
+    @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[#ffffff40] gap-[4px] py-[12px] px-[20px] inline-block  text-[12px] leading-[12px] -tracking-[0.36px];
   }
 
   .author {

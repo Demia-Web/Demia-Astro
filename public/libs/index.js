@@ -59,3 +59,43 @@ window.onload = initializeVisibleLogos;
 
 // Cambia un logo casualmente ogni 2 secondi
 setInterval(changeNextLogo, 1300);
+
+import SplitType from "split-type";
+document.addEventListener("astro:page-load", () => {
+  const splitText = new SplitType(".reveal-text", { types: "chars" });
+
+  // Avvolgiamo ogni carattere in un contenitore con overflow hidden
+  splitText.chars?.forEach((char) => {
+    if (char) {
+      // Controlla che 'char' non sia null
+      const wrapper = document.createElement("div");
+      wrapper.style.overflow = "hidden"; // Nasconde il carattere finché non emerge
+      wrapper.style.display = "inline-block"; // Mantiene il carattere inline
+      wrapper.classList.add("wrapper-class"); // Aggiunge una classe opzionale al wrapper
+
+      const parent = char.parentNode; // Verifica il nodo genitore
+      if (parent) {
+        // Assicurati che il nodo genitore non sia null
+        parent.replaceChild(wrapper, char); // Sostituisce il carattere originale con il wrapper
+        wrapper.appendChild(char); // Inserisce il carattere all'interno del wrapper
+      }
+    }
+  });
+
+  // Creiamo l'animazione per i caratteri che emergono dal basso
+  gsap.fromTo(
+    splitText.chars,
+    { translateY: "100%" }, // Inizio: i caratteri partono fuori dalla vista, nascosti dal wrapper
+    {
+      translateY: "0%", // I caratteri si muovono verso la posizione originale
+      duration: 0.35, // Durata breve per ogni carattere
+      ease: "power4.out", // Movimento fluido
+      stagger: 0.01, // Ritardo tra l'animazione di ogni carattere per creare l'effetto "onda"
+      scrollTrigger: {
+        trigger: ".reveal-text", // Trigger generale per l'intero testo
+        start: "top 200px", // Inizio quando il testo entra nell'80% della viewport
+        toggleActions: "play none none none" // Anima in reverse quando esce dalla viewport
+      }
+    }
+  );
+});
