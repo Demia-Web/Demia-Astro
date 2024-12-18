@@ -1,8 +1,6 @@
 import gsap from "gsap";
 
 import Lenis from "lenis";
-
-import gsap from "gsap";
 gsap.registerPlugin();
 
 document.addEventListener("astro:page-load", () => {
