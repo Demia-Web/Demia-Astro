@@ -3,6 +3,8 @@ import BaseHead from "../includes/BaseHead.astro";
 import Header from "../includes/Header.astro";
 import Footer from "../includes/Footer.astro";
 
+import { ClientRouter } from "astro:transitions";
+
 export interface Props {
   title: string;
   description: string;
@@ -15,6 +17,7 @@ const { title, description } = Astro.props;
 <html lang="it" id="html">
   <head>
     <BaseHead title={title} description={description} />
+    <ClientRouter />
   </head>
   <body id="body" class="bg-nero">
     <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
