@@ -21,13 +21,6 @@ html {
   overflow-x: hidden;
 }
 
-.no-scroll {
-  overflow: hidden !important; /* Blocca scroll */
-  touch-action: none; /* Previene lo scroll touch sui dispositivi mobili */
-  position: fixed; /* Previene movimenti in caso di overflow */
-  inset: 0; /* Assicura che il layout non si sposti */
-}
-
 @layer components {
   h1 {
     @apply text-[5vw];

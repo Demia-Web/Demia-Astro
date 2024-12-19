@@ -2,7 +2,9 @@ import gsap from "gsap";
 
 import Lenis from "lenis";
 
-gsap.registerPlugin();
+import SplitType from "split-type";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Lenis
 
@@ -71,6 +73,7 @@ document.addEventListener("astro:page-load", () => {
       icon1.classList.toggle("a");
       icon2.classList.toggle("b");
       nav.classList.toggle("hidden");
+      toggleLenis();
       if (textMenu.textContent === "menu") {
         textMenu.textContent = "chiudi";
       } else {
@@ -84,18 +87,6 @@ document.addEventListener("astro:page-load", () => {
       setTimeout(function () {
         header.classList.toggle("bg-[#ffffff40]");
       }, 100);
-
-      // Blocca o sblocca lo scroll del sito
-      if (body.classList.contains("no-scroll")) {
-        html.classList.remove("no-scroll");
-        body.classList.remove("no-scroll");
-        body.style.marginRight = "";
-      } else {
-        var scrollbarWidth = getScrollbarWidth();
-        html.classList.add("no-scroll");
-        body.classList.add("no-scroll");
-        body.style.marginRight = scrollbarWidth + "px";
-      }
     });
   });
 });

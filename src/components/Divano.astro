@@ -14,3 +14,101 @@
     <div class="after-div"></div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    gsap.fromTo(
+      "#divano img",
+      {
+        opacity: 0,
+        y: 0
+      }, // Inizio: invisibile e nella posizione originale
+      {
+        opacity: 1,
+        y: 50, // Fine: visibile e spostata 50px verso il basso
+        ease: "power4.out", // Easing per un'animazione fluida
+        scrollTrigger: {
+          trigger: "#unico", // La sezione che attiva l'animazione
+          start: "top 80%", // Inizia quando la parte superiore della sezione è all'80% della finestra
+          end: "bottom 50%", // L'animazione termina quando la parte inferiore della sezione raggiunge il 50%
+          scrub: 0.5, // Attiva lo scrub per rendere l'animazione legata allo scroll
+          toggleActions: "play none none none"
+        }
+      }
+    );
+
+    // Inizializzazione di GSAP con matchMedia
+    gsap.matchMedia().add("(min-width: 768px)", () => {
+      // Animazione per schermi più grandi (>=768px)
+      gsap.to(".after-div", {
+        height: 0, // Riduce l'altezza a zero
+        width: 0, // Riduce la larghezza a zero
+        ease: "power4.inOut", // Easing per una transizione fluida
+        scrollTrigger: {
+          trigger: "#unico", // La sezione che attiva l'animazione
+          start: "top 80%", // Inizia quando la parte superiore della sezione è all'80% della finestra
+          end: "bottom +=28%", // Termina prima rispetto agli altri elementi
+          scrub: 0.1, // Effetto scrub
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    // Animazione per schermi più piccoli (<768px)
+    gsap.matchMedia().add("(max-width: 767px)", () => {
+      // Animazione diversa per schermi più piccoli
+      gsap.to(".after-div", {
+        height: "75%", // Riduce l'altezza a zero
+        width: "100%", // Riduce la larghezza a zero
+        ease: "power4.inOut", // Easing per una transizione fluida
+        scrollTrigger: {
+          trigger: "#unico", // La sezione che attiva l'animazione
+          start: "top +=120%", // Inizia quando la parte superiore della sezione è all'80% della finestra
+          end: "top 30%", // Termina prima rispetto agli altri elementi
+          scrub: 0.5, // Effetto scrub
+          toggleActions: "play none none none"
+        }
+      });
+    });
+    // Animazione per il testo "p" con scrub e ritardo
+    gsap.fromTo(
+      "#unico p",
+      {
+        opacity: 0,
+        y: 100
+      }, // Inizio con una posizione meno estrema
+      {
+        opacity: 1,
+        y: 0, // Fine: visibile e nella posizione originale
+        ease: "power4.out", // Easing per un'animazione più fluida
+        scrollTrigger: {
+          trigger: "#unico", // La sezione che attiva l'animazione
+          start: "top 80%", // Inizia quando la parte superiore della sezione è all'80% della finestra
+          end: "bottom 50%", // Termina quando la parte inferiore della sezione raggiunge il 50%
+          scrub: 0.5, // Effetto scrub
+          toggleActions: "play none none none"
+        }
+      }
+    );
+    // Animazione per il pulsante ".big-button" con scrub e ritardo
+    gsap.fromTo(
+      "#unico .big-button",
+      {
+        opacity: 0,
+        y: 150
+      }, // Inizio: invisibile e sotto l'immagine
+      {
+        opacity: 1,
+        y: 0, // Fine: visibile e nella posizione originale
+        ease: "power4.out", // Easing per un'animazione più fluida
+        scrollTrigger: {
+          trigger: "#unico p", // La sezione che attiva l'animazione
+          start: "top 80%", // Inizia quando la parte superiore della sezione è all'80% della finestra
+          end: "bottom 50%", // Termina quando la parte inferiore della sezione raggiunge il 50%
+          scrub: 0.5, // Effetto scrub
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+</script>
