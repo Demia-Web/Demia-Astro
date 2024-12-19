@@ -1,9 +1,10 @@
 import SplitType from "split-type";
 
-console.log("DIO GIUSEPPE");
+console.log(" GIUSEPPE");
 
 // LOADER
 document.addEventListener("astro:page-load", () => {
+  console.log("GIUSEPPE START");
   // // console.log("Evento 'astro:page-load' catturato. Inizializzazione...");
 
   function startLoader() {
