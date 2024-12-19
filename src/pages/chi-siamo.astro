@@ -271,7 +271,7 @@ const teams = await fetchTeams();
 
   <div class="mx-[16px] lg:mx-[2.222vw] mt-[100px] lg:mt-[10.417vw] mb-[100px] lg:mb-0 rounded-[16px] lg:rounded-[1.667vw" id="lavora-con-noi"></div>
 
-  <!-- ANIMAZIONE VTB -->
+  <!-- ANIMAZIONE VTB
   <script>
     const tl = gsap.timeline();
     // Applica un'animazione di scaling da 0 a 1
@@ -290,7 +290,7 @@ const teams = await fetchTeams();
   </script>
 
   <!-- ANIMAZIONE DON'T QUIT -->
-  <script>
+  <!-- <script>
     // Applica l'animazione quando il blocco diventa visibile con delay di 1 secondo
     gsap.from("#text-dontquit", {
       scrollTrigger: {
@@ -313,10 +313,10 @@ const teams = await fetchTeams();
         }
       }
     });
-  </script>
+  </script> -->
 
   <!-- ANIMAZIONE MARQUEE -->
-  <script>
+  <!-- <script>
     setTimeout(() => {
       // Selezioniamo il contenitore del testo
       const marqueeTeam = document.querySelector(".marquee-team");
@@ -332,7 +332,7 @@ const teams = await fetchTeams();
         duration: 20 // Durata, puoi regolare in base alla velocità desiderata
       });
     }, 2000);
-  </script>
+  </script>  -->
 
   <!-- ANIMAZIONE TEAM CARDS POPUP -->
   <!-- <script>
@@ -420,7 +420,7 @@ const teams = await fetchTeams();
         document.getElementById('overlay').addEventListener('click', closePopup);
     </script> -->
 
-  <!-- ANIMAZIONE AUTOSTART VIDEO -->
+  <!-- ANIMAZIONE AUTOSTART VIDEO
   <script>
     setTimeout(() => {
       gsap.registerPlugin(ScrollTrigger);
@@ -467,35 +467,34 @@ const teams = await fetchTeams();
     }, 2000);
   </script>
 
-  <!-- FORZATURA SCROLL TEAM -->
+  <!-- FORZATURA SCROLL TEAM 
   <script>
-    // Funzione per forzare lo scroll su un elemento specifico
-    function forceScrollOnElement(className) {
-      const scrollElement = document.querySelector(className);
+  //   // Funzione per forzare lo scroll su un elemento specifico
+  //   function forceScrollOnElement(className) {
+  //     const scrollElement = document.querySelector(className);
 
-      if (!scrollElement) return; // Esce se l'elemento non è trovato
+  //     if (!scrollElement) return; // Esce se l'elemento non è trovato
 
-      // Aggiungi un listener per l'evento di scroll
-      scrollElement.addEventListener("wheel", function (event) {
-        // Impedisce lo scroll del body
-        event.preventDefault();
+  //     // Aggiungi un listener per l'evento di scroll
+  //     scrollElement.addEventListener("wheel", function (event) {
+  //       // Impedisce lo scroll del body
+  //       event.preventDefault();
 
-        // Scrolla l'elemento stesso, dando priorità allo scroll verticale
-        scrollElement.scrollTop += event.deltaY;
-      });
+  //       // Scrolla l'elemento stesso, dando priorità allo scroll verticale
+  //       scrollElement.scrollTop += event.deltaY;
+  //     });
 
-      // Aggiungi un listener per il tocco su dispositivi mobili
-      scrollElement.addEventListener("touchmove", function (event) {
-        event.preventDefault();
-        scrollElement.scrollTop += event.touches[0].clientY;
-      });
-    }
+  //     // Aggiungi un listener per il tocco su dispositivi mobili
+  //     scrollElement.addEventListener("touchmove", function (event) {
+  //       event.preventDefault();
+  //       scrollElement.scrollTop += event.touches[0].clientY;
+  //     });
+  //   }
 
-    // Attiva lo scroll forzato sull'elemento con la classe ".popteam-content"
-    forceScrollOnElement(".popteam-content");
-  </script>
+  //   // Attiva lo scroll forzato sull'elemento con la classe ".popteam-content"
+  //   forceScrollOnElement(".popteam-content");
+</script>
 
-  <!-- INTERAZIONE CON LED ONAIR -->
   <script>
     const myElement = document.getElementById("onair");
     const circleonair = document.getElementById("circle-onair");
@@ -511,7 +510,7 @@ const teams = await fetchTeams();
       ledonair.classList.toggle("shadow-ledoff");
       ledonair.classList.toggle("flicker");
     });
-  </script>
+  </script> -->
 
-  <script src="libs/chi-siamo.js" is:inline></script>
+  <script is:inline src="/libs/chi-siamo.js"></script>
 </Layout>
