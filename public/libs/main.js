@@ -1,91 +1,10 @@
 import gsap from "gsap";
 
 import Lenis from "lenis";
+
 gsap.registerPlugin();
 
-document.addEventListener("astro:page-load", () => {
-  const accordions = document.querySelectorAll(".accordion-item");
-
-  const triggerOffset = -200; // Offset del trigger point di 200 px sopra l'accordion generale
-  const animationDuration = 0.5; // Durata dell'animazione in secondi
-
-  // Imposta l'osservatore di intersezione per animare gli accordion all'entrata nel viewport
-  const observerOptions = {
-    root: null,
-    rootMargin: `${triggerOffset}px 0px 0px 0px`,
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const accordion = entry.target;
-        const index = Array.from(accordions).indexOf(accordion);
-        gsap.to(accordion, {
-          opacity: 1,
-          y: 0,
-          duration: animationDuration,
-          ease: "power4.out",
-          delay: index * 0.1 // Ritardo a cascata
-        });
-        observer.unobserve(accordion); // Interrompi l'osservazione dopo l'animazione iniziale
-      }
-    });
-  }, observerOptions);
-
-  // Imposta gli accordion per essere inizialmente invisibili e fuori posizione
-  accordions.forEach((accordion) => {
-    if (accordion.classList.contains("accordion-item-header")) {
-      return;
-    }
-
-    gsap.set(accordion, {
-      opacity: 0,
-      y: 50
-    });
-
-    observer.observe(accordion);
-  });
-
-  // Aggiunge l'evento di click per aprire/chiudere gli accordion
-  accordions.forEach((accordion) => {
-    const header = accordion.querySelector(".accordion-header");
-    const content = accordion.querySelector(".accordion-content");
-    const symbol = accordion.querySelector(".symbol");
-
-    accordion.addEventListener("click", () => {
-      const isOpen = content.classList.contains("open");
-
-      if (isOpen) {
-        gsap.to(content, {
-          maxHeight: 0,
-          duration: animationDuration,
-          ease: "power4.inOut"
-        });
-        symbol.textContent = "+";
-        content.classList.remove("open");
-      } else {
-        const fullHeight = content.scrollHeight + "px";
-        gsap.fromTo(
-          content,
-          {
-            maxHeight: 0
-          },
-          {
-            maxHeight: fullHeight,
-            duration: animationDuration,
-            ease: "power4.inOut",
-            onComplete: () => {
-              content.style.maxHeight = "auto"; // Ensure it stays open
-            }
-          }
-        );
-        symbol.textContent = "-";
-        content.classList.add("open");
-      }
-    });
-  });
-});
+// Lenis
 
 const lenis = new Lenis({
   autoRaf: true,
@@ -99,12 +18,11 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// Listen for the scroll event and log the event data
 lenis.on("scroll", (e) => {
   // console.log(e);
 });
 
-var isLenisRunning = true; // Variabile di stato per tenere traccia di Lenis
+var isLenisRunning = true;
 
 function toggleLenis() {
   if (lenis) {
@@ -133,72 +51,106 @@ document.addEventListener("astro:page-load", () => {
   lenis.start();
 });
 
+// Header
+
 document.addEventListener("astro:page-load", () => {
   var icons = document.getElementsByClassName("click-menu");
   var icon1 = document.getElementById("a");
   var icon2 = document.getElementById("b");
-  var body = document.getElementById("body");
-  var html = document.getElementById("html");
-  var menu = document.getElementById("menuMobile");
-  var slide = document.getElementById("slideBLu");
+  var nav = document.getElementById("nav");
+  var textMenu = document.getElementById("textmenu");
+  var boxheader = document.getElementById("box-header");
+  var header = document.getElementById("header");
+  var logo = document.getElementById("logo");
+  var body = document.body;
+  var html = document.documentElement;
 
   Array.prototype.forEach.call(icons, function (icon) {
     icon.addEventListener("click", function () {
-      console.log("Icon clicked");
+      // Toggle delle classi del menu
       icon1.classList.toggle("a");
       icon2.classList.toggle("b");
-      menu.classList.toggle("show");
-      body.classList.toggle("block");
-      html.classList.toggle("overflow-hidden");
-      slide.classList.toggle("slide");
-      toggleLenis();
+      nav.classList.toggle("hidden");
+      if (textMenu.textContent === "menu") {
+        textMenu.textContent = "chiudi";
+      } else {
+        textMenu.textContent = "menu";
+      }
+
+      logo.classList.toggle("opacity-0");
+      boxheader.classList.toggle("backdrop-blur-lg");
+      boxheader.classList.toggle("mix-blend-difference");
+
+      setTimeout(function () {
+        header.classList.toggle("bg-[#ffffff40]");
+      }, 100);
+
+      // Blocca o sblocca lo scroll del sito
+      if (body.classList.contains("no-scroll")) {
+        html.classList.remove("no-scroll");
+        body.classList.remove("no-scroll");
+        body.style.marginRight = "";
+      } else {
+        var scrollbarWidth = getScrollbarWidth();
+        html.classList.add("no-scroll");
+        body.classList.add("no-scroll");
+        body.style.marginRight = scrollbarWidth + "px";
+      }
     });
   });
 });
 
-// HEADER
-document.addEventListener("astro:page-load", () => {
-  let lastScrollTop = 0;
-  const navbar = document.getElementById("navbar");
-  const navbarHeight = navbar.offsetHeight;
+// Accordion
+document.querySelectorAll(".accordion").forEach((item) => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
 
-  // Funzione per controllare se l'utente è su un dispositivo desktop
-  function isDesktop() {
-    return window.innerWidth > 1024; // Definisci il breakpoint per mobile/desktop (qui 1024px)
-  }
+    const content = this.nextElementSibling;
+    const isOpen = content.classList.contains("open");
+    const icon = this.querySelector("img");
 
-  // Evento scroll per mostrare o nascondere la navbar
-  window.addEventListener("scroll", () => {
-    // if (isDesktop()) {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Se si scorre verso il basso, nascondi l'header
-    if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
-      navbar.classList.remove("nav-down");
-      navbar.classList.add("nav-up");
+    if (isOpen) {
+      // Chiude l'accordion
+      content.classList.remove("open");
+      content.classList.remove("show");
+      icon.src = "img/assets/icon-plus.svg";
+      resetItems(content.querySelectorAll("li"));
+    } else {
+      content.classList.add("open");
+      setTimeout(() => {
+        animateItems(content.querySelectorAll("li"));
+      }, 200);
+      icon.src = "img/assets/icon-minus.svg";
     }
-    // Se si scorre verso l'alto, mostra l'header
-    else if (scrollTop < lastScrollTop) {
-      navbar.classList.remove("nav-up");
-      navbar.classList.add("nav-down");
-    }
-
-    lastScrollTop = scrollTop;
-    // }
   });
 });
 
-document.addEventListener("astro:page-load", () => {
-  const marqueeContent = document.querySelector(".marquee-content");
-
-  // Duplicate content for a seamless loop
-  const marqueeClone = marqueeContent.cloneNode(true);
-  marqueeContent.parentElement.appendChild(marqueeClone);
-
-  gsap.to(".marquee-content", {
-    xPercent: -100,
-    ease: "none",
-    duration: 20,
-    repeat: -1
+//Animate accordion menu
+function animateItems(items) {
+  items.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    }, index * 200);
   });
+}
+
+//Reset accordion menu
+function resetItems(items) {
+  items.forEach((item) => {
+    item.style.opacity = "0";
+    item.style.transform = "translateY(20px)";
+  });
+}
+
+// Footer
+const marqueeInner = document.querySelector(".marquee-inner");
+
+marqueeInner.innerHTML += marqueeInner.innerHTML;
+
+gsap.to(".marquee-inner", {
+  xPercent: -50,
+  ease: "none",
+  repeat: -1,
+  duration: 20
 });
