@@ -1,0 +1,93 @@
+---
+import portfolioData from "../assets/portfolio.json";
+
+const currentUrl = Astro.url.pathname;
+
+const normalizedUrl = currentUrl.replace(/\/$/, "");
+
+const filterdata = portfolioData.filter((item) => {
+  const normalizedLink = item.link.replace(/\/$/, "");
+  return normalizedLink !== normalizedUrl;
+});
+---
+
+<section class="py-[20.833vw]">
+  <div class="p-body flex flex-row justify-between items-center">
+    <div class="p-body text-bianco flex flex-row items-center gap-[4.167vw]">
+      <img src="../img/assets/arrow-right-bold.svg" alt="" class="h-[10.764vw]" />
+      <p class="big-title">next</p>
+    </div>
+    <div class="hidden lg:flex flex-row gap-[1.111vw] items-end">
+      <div class="swiper-portfolio-prev swiper-arrows" class="rotate-180">
+        <img src="/img/assets/swiper-arrow-right.svg" alt="" id="a" class="" />
+        <img src="/img/assets/swiper-arrow-gradient.svg" alt="" id="b" class="rotate-180" />
+      </div>
+      <div class="swiper-portfolio-next swiper-arrows">
+        <img src="/img/assets/swiper-arrow-right.svg" alt="" id="a" class="rotate-180" />
+        <img src="/img/assets/swiper-arrow-gradient.svg" alt="" id="b" />
+      </div>
+    </div>
+  </div>
+
+  <div class="pl-[2.222vw]">
+    <div class="swiper swiper-portfolio">
+      <div class="swiper-wrapper">
+        {
+          filterdata.map((progetto) => (
+            <div class="swiper-slide">
+              <a href={progetto.link} class="box-portfolio">
+                <div class="relative project" data-tags={progetto.tags.join(" ")}>
+                  <div class="absolute left-0 top-0 w-full h-full rounded-[16px] lg:rounded-[1.667vw] bg-nero/0" />
+                  <video autoplay loop muted playsinline class="w-full object-cover h-[400px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
+                    <source src={progetto.background} type="video/mp4" />
+                  </video>
+                  <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
+                    <div>
+                      <p class="text-bianco text-[44px] lg:text-[5vw] leading-[48px] lg:leading-[5.278vw] -tracking-[1.32px] lg:-tracking-[0.15vw] font-[700] mb-[1.667vw]" set:html={progetto.title} />
+                    </div>
+                    <div class="flex flex-row flex-wrap lg:flex-nowrap gap-[0.694vw]">
+                      {progetto.tags.map((tag) => (
+                        <p class="button-small">{tag}</p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .swiper-arrows {
+    padding: 1.111vw;
+    border: 0.069vw solid #fff;
+    border-radius: 999999999px;
+    width: fit-content;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .swiper-arrows:hover {
+    background-color: #fff;
+  }
+
+  .swiper-arrows img {
+    width: 3.333vw;
+  }
+
+  .swiper-arrows #b {
+    display: none;
+  }
+
+  .swiper-arrows:hover #a {
+    display: none;
+  }
+
+  .swiper-arrows:hover #b {
+    display: block;
+  }
+</style>

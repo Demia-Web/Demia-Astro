@@ -164,13 +164,13 @@ header p {
 }
 
 .icon-1.a {
-  transform: rotate(40deg);
+  transform: rotate(45deg);
   background-color: #ffffff;
   top: 50%;
 }
 
 .icon-2.b {
-  transform: rotate(-40deg);
+  transform: rotate(-45deg);
   width: 2.222vw;
   background-color: #ffffff;
   top: 50%;
@@ -656,7 +656,7 @@ header p {
 #list-about {
   transform: translate3d(0, 0, 0);
   transition: none;
-  transform: translatex(10%);
+  transform: translatex(-36px);
 }
 
 .line {
@@ -1090,9 +1090,32 @@ input[type="number"]:not(:placeholder-shown) + label {
   opacity: 0;
 }
 
+.custom-cursor {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: none;
+  mix-blend-mode: exclusion;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  cursor: none !important;
+  @apply bg-bianco/20 backdrop-blur-xl text-bianco font-[700];
+}
+
+.cursor-conosci {
+  width: 150px;
+  height: 150px;
+}
+
 @media screen and (max-width: 992px) {
   h1 {
-    @apply text-[44px];
+    @apply text-[40px];
     @apply leading-[48px];
     @apply -tracking-[1.32px];
   }
@@ -1192,6 +1215,10 @@ input[type="number"]:not(:placeholder-shown) + label {
     @apply text-bianco backdrop-blur-lg rounded-[100px] bg-[#ffffff40] gap-[4px] py-[12px] px-[20px] inline-block  text-[12px] leading-[12px] -tracking-[0.36px];
   }
 
+  .button-home {
+    @apply !text-[14px];
+  }
+
   .author {
     @apply text-nero font-[700] leading-[20px] text-[16px] -tracking-[0.48px];
   }
@@ -1207,9 +1234,9 @@ input[type="number"]:not(:placeholder-shown) + label {
 
   #portfolio-home .title {
     margin-bottom: 1.667vw;
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 44px;
     letter-spacing: -1.32px;
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1242,7 +1269,7 @@ input[type="number"]:not(:placeholder-shown) + label {
     border-radius: 1000px;
     font-weight: 700;
     background-color: transparent;
-    border: 0.74px solid white;
+    border: 1px solid white;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -1279,7 +1306,7 @@ input[type="number"]:not(:placeholder-shown) + label {
   }
 
   #list-about {
-    transform: translatex(0%);
+    transform: translatex(-16px);
   }
 
   .team {

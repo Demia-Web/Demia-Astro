@@ -1,0 +1,304 @@
+---
+import Layout from "../layout/Layout.astro";
+import Header from "../includes/Header.astro";
+import Divano from "../components/Divano.astro";
+import SceltaServizi from "../components/SceltaServizi.astro";
+
+async function fetchStrategy() {
+  const url = `${import.meta.env.PUBLIC_URL_TOKEN}/api/graphic-designs?populate=*`;
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.PUBLIC_AUTH_TOKEN}`
+    }
+  });
+  const data = await response.json();
+  return data.data;
+}
+
+const data = await fetchStrategy();
+
+const servizi = data.flatMap((item: { Servizi: any }) => item.Servizi);
+
+// Estrai FAQ
+const faq = data.flatMap((item: { FAQ: any }) => item.FAQ);
+---
+
+<Layout title="asd" description="asd">
+  <section class="p-body pt-[2.5vw]" id="content">
+    <Header />
+  </section>
+  <section class="mt-[10.194vw] p-body flex flex-col lg:flex-row lg:justify-between lg:items-end">
+    <div>
+      <h3 class="title-section text-bianco">
+        titolo sul<br />
+        graphic design
+      </h3>
+    </div>
+    <div class="flex flex-col lg:items-end lg:text-end gap-[60px] mt-[50px] lg:mt-0">
+      <p class="text-bianco text-start">
+        qui una frase di all’incirca<br />
+        quattro righe che introduca<br />
+        il fatto che sia una pagina<br />
+        sulla brand strategy
+      </p>
+      <!-- <img src="img/assets/icon-gradient.svg" alt="" class="w-[4.861vw]"> -->
+      <svg id="animated-svg" class="w-[45px] lg:w-[4.861vw] -rotate-90 lg:rotate-0" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="paint0" x1="65" y1="34" x2="7" y2="34" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E6007E"></stop>
+            <stop offset="1" stop-color="#F9B000"></stop>
+          </linearGradient>
+          <linearGradient id="paint1" x1="64.6152" y1="35" x2="5.38447" y2="35" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E6007E"></stop>
+            <stop offset="1" stop-color="#F9B000"></stop>
+          </linearGradient>
+          <clipPath id="clip0">
+            <rect width="70" height="70" fill="white" transform="translate(70 70) rotate(-180)"></rect>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#clip0)">
+          <path d="M65 5L7 63" stroke="url(#paint0)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"></path>
+          <path d="M64.6152 64.6154L5.38446 64.6154L5.38447 5.38461" stroke="url(#paint1)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <div class="marquee w-full box-border mt-[60px] mb-[32px] lg:mb-0 lg:mt-[5.556vw]">
+    <p class="marquee-text marquee-info flex flex-row gap-[60px] lg:gap-[6.944vw]">
+      <span>ux/ui design</span>
+      <span>sviluppo sito web</span>
+      <span>realizzazione e-commerce</span>
+      <span>ottimizzazione seo</span>
+      <span>analytics and monitoring</span>
+      <span>creazione blog</span>
+      <span>ux/ui design</span>
+      <span>sviluppo sito web</span>
+      <span>realizzazione e-commerce</span>
+      <span>ottimizzazione seo</span>
+      <span>analytics and monitoring</span>
+      <span>creazione blog</span>
+    </p>
+  </div>
+
+  <div class="p-body pt-[2.222vw] pb-[10.194vw]">
+    <video autoplay loop muted playsinline class="w-full object-cover h-[680px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
+      <source src="video/home-portfolio/martinelli.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <section class="p-body pt-[150px] lg:pt-[10.194vw]">
+    <p class="text-[24px] lg:text-[3.056vw] leading-[28px] lg:leading-[3.333vw] text-bianco font-[400] text-center" id="text-emote">
+      Questo è uno spazio per scrivere una frase<br />
+      emozionale, magari in merito alla nostra<br />
+      filosofia, al modo di fare “demia” e non la farei<br />
+      superiore alle quattro righe.
+    </p>
+  </section>
+
+  <section class="p-body pt-[10.194vw] flex justify-center items-center min-h-screen relative" id="webSection">
+    <div class="flex justify-center items-center">
+      <img id="webImage" src="img/page/webdevelopment/intro-web-1.jpg" class="w-[500px] h-[500px] relative" />
+      <div id="textContainer" class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center opacity-0">
+        <p class="text-white text-3xl mb-4 opacity-0">Text 1</p>
+        <p class="text-white text-3xl mb-4 opacity-0">Text 2</p>
+        <p class="text-white text-3xl opacity-0">Text 3</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-body pt-[10.194vw]">
+    <div class="flex flex-row justify-between border-bianco lg:border-b-[0.139vw] border-b-[1px] lg:pb-[0.833vw] pb-[8px]">
+      <p class="text-bianco font-[700]">altra cosina da scrivere qui</p>
+      <div class="flex flex-row gap-[8px] lg:gap-[0.833vw]">
+        <p class="text-bianco font-[700]">
+          <span class="text hover-target">lorem ipsum</span>
+        </p>
+      </div>
+    </div>
+    <div class="pt-[100px] lg:py-[10.194vw]">
+      <p class="title text-bianco text-center font-[700] reveal-text">brand positioning</p>
+      <p class="text-[24px] lg:text-[3.056vw] leading-[28px] lg:leading-[3.333vw] text-bianco font-[400] text-center mt-[1.667vw]" id="text-emote2">
+        Questo è uno spazio per scrivere una frase<br />
+        emozionale, magari in merito alla nostra<br />
+        filosofia, al modo di fare “demia” e non la farei<br />
+        superiore alle quattro righe.
+      </p>
+    </div>
+  </section>
+
+  <div class="p-body pt-[100px] lg:pt-[2.222vw] pb-[150px] lg:pb-[10.194vw]">
+    <video autoplay loop muted playsinline class="w-full object-cover h-[480px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
+      <source src="video/home-portfolio/decore.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="bg-bianco pt-[150px] pb-[100px] lg:py-[10.194vw] p-body">
+    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-end lg:gap-[6.944vw] gap-[24px]">
+      <p class="text-[32px] lg:text-[3.056vw] leading-[36px] lg:leading-[3.333vw] text-nero font-[400]">
+        Qui immagino una breve<br />
+        descrizione che introduca al<br />
+        servizio di sviluppo web.<br />
+        Deve essere un focus che<br />
+        non supera le cinque righe.
+      </p>
+      <div class="flex flex-col">
+        <p class="text-nero">
+          Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio<br /> in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.
+        </p>
+        <a href="" class="sub-link sub-link-light text-nero flex gap-[8px] lg:gap-[0.556vw] mt-[24px] lg:mt-[3.056vw] w-fit"
+          >richiedi un appuntamento
+          <img src="img/assets/icon-arrow-dark.svg" class="w-[14px] lg:w-[0.972vw]" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-body bg-bianco pb-[100px] lg:pb-[10.194vw]" id="accordion-container">
+    <div class="accordion">
+      {
+        servizi.length ? (
+          servizi.map((servizio: { Title: unknown; Content: unknown }, index: number) => (
+            <div class="accordion-item" id={`title-faq-${index + 1}`}>
+              <div class="accordion-header flex">
+                <div class="lg:w-2/3 w-[15%]">
+                  <span class="number-accordion-service">{index + 1}</span>
+                </div>
+                <div class="lg:w-1/3 w-[85%] flex flex-row items-center justify-between">
+                  <h5>{servizio.Title}</h5>
+                  <span class="symbol hover-target">+</span>
+                </div>
+              </div>
+              <div class="accordion-content">
+                <div class="flex flex-row justify-end mt-[20px] lg:mt-[0.833vw]">
+                  <div class="lg:w-1/3 w-[85%]">
+                    <div class="lg:w-[80%]">
+                      <p>{servizio.Content}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Nessun progetto trovato.</p>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="bg-bianco p-body pb-[10.417vw]">
+    <div class="bg-grigio py-[6.944vw] px-[13.889vw] rounded-[1.667vw]">
+      <div id="bg-web-faq" class="rounded-[1.667vw] flex flex-col justify-between">
+        <p class="title-section text-bianco font-[700] !leading-[13.889vw] title-faq-1">l'immagine</p>
+        <p class="text-end title-section text-bianco font-[700] !leading-[13.889vw] title-faq-2">la tua</p>
+      </div>
+    </div>
+  </div>
+  <div class="bg-bianco p-body pt-[100px] lg:pt-0 pb-[1px] lg:pb-[10.417vw]">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between">
+      <p class="text-nero font-[700] title lg:w-1/2">
+        perchè sceglierci<br />
+        come web agency
+      </p>
+      <a href="" class="sub-link sub-link-light text-nero flex gap-[8px] lg:gap-[0.556vw] mt-[24px] lg:mt-[3.056vw] w-fit"
+        >vedi i nostri lavori
+        <img src="img/assets/icon-arrow-dark.svg" class="w-[13px] lg:w-[0.972vw]" />
+      </a>
+    </div>
+    <div class="pt-[60px] lg:pt-[6.944vw] mb-[100px] lg:mb-[10.417vw] border-nero border-b-[1px] lg:border-b-[0.069vw]"></div>
+    <div class="lg:flex flex-row lg:gap-[10.417vw] hidden">
+      <div class="w-1/3 flex flex-col">
+        <p class="text-magenta font-[600] title">01</p>
+        <p class="font-[700] text-[1.667vw] my-[2.222vw]">motivo 1</p>
+        <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+      </div>
+      <div class="w-1/3 flex flex-col">
+        <p class="text-arancio font-[600] title">02</p>
+        <p class="font-[700] text-[1.667vw] my-[2.222vw]">motivo 2</p>
+        <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+      </div>
+      <div class="w-1/3 flex flex-col">
+        <p class="text-giallo font-[600] title">03</p>
+        <p class="font-[700] text-[1.667vw] my-[2.222vw]">motivo 3</p>
+        <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block lg:hidden bg-bianco pb-[150px]">
+    <div class="swiper swiper-task">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="w-full flex flex-col justify-between p-[16px]">
+            <p class="text-magenta font-[600] title">01</p>
+            <p class="font-[700] text-[20px] lg:text-[1.667vw] my-[32px] lg:my-[2.222vw]">motivo 1</p>
+            <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w-full flex flex-col justify-between p-[16px]">
+            <p class="text-arancio font-[600] title">02</p>
+            <p class="font-[700] text-[20px] lg:text-[1.667vw] my-[32px] lg:my-[2.222vw]">motivo 1</p>
+            <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="w-full flex flex-col justify-between p-[16px]">
+            <p class="text-giallo font-[600] title">03</p>
+            <p class="font-[700] text-[20px] lg:text-[1.667vw] my-[32px] lg:my-[2.222vw]">motivo 1</p>
+            <p class="font-[300]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-bianco">
+    <video autoplay loop muted playsinline class="w-full object-cover h-[680px] lg:h-[60vw] lg:rounded-tl-[1.667vw] lg:rounded-tr-[1.667vw] rounded-tl-[16px] rounded-tr-[16px]">
+      <source src="video/home-portfolio/decore.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="p-body py-[150px] lg:py-[10.417vw] flex flex-col lg:flex-row gap-[12px] lg:gap-[6.944vw]">
+    <div class="lg:w-2/3">
+      <p class="text-bianco font-[700] title">
+        domande<br />
+        frequenti
+      </p>
+    </div>
+    <div class="lg:w-1/3 mt-[60px] lg:mt-0" id="accordion-small-container">
+      <div class="accordion">
+        {
+          faq.length ? (
+            faq.map((faqItem: { Title: unknown; Content: unknown }, index: any) => (
+              <div class="accordion-item-small">
+                <div class="accordion-header-small flex">
+                  <div class="flex flex-row items-center justify-between gap-[12px] lg:gap-[0.833vw]">
+                    <span class="symbol symbol-small">+</span>
+                    <p>{faqItem.Title}</p>
+                  </div>
+                </div>
+                <div class="accordion-content-small">
+                  <div class="flex flex-row mt-[20px] lg:mt-[0.833vw]">
+                    <div class="">
+                      <div class="w-[80%] ml-[24px]">
+                        <p class="text-bianco">{faqItem.Content}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>Nessun progetto trovato.</p>
+          )
+        }
+      </div>
+    </div>
+  </div>
+  <div class="border-bianco border-b-[0.139vw] mx-[2.222vw]"></div>
+  <script src="../../public/libs/graphic-design.js"></script>
+  <Divano />
+  <SceltaServizi />
+</Layout>

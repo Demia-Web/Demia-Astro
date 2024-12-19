@@ -1,0 +1,225 @@
+---
+import Layout from "../layout/Layout.astro";
+import Divano from "../components/Divano.astro";
+import Header from "../includes/Header.astro";
+
+// import nodemailer from "nodemailer";
+
+if (Astro.request.method === "POST") {
+  try {
+    const formData = await Astro.request.formData();
+
+    // Estrarre i dati dal FormData
+    const name = formData.get("name");
+    const surname = formData.get("surname");
+    const email = formData.get("email");
+    const phoneNumber = formData.get("phoneNumber");
+    const message = formData.get("message");
+
+    console.log(name, surname, email, phoneNumber, message);
+
+    console.log("import.meta.env.SMTP_HOST ", import.meta.env.SMTP_HOST);
+    console.log("import.meta.env.SMTP_USER ", import.meta.env.SMTP_USER);
+    console.log("import.meta.env.SMTP_PASS ", import.meta.env.SMTP_PASS);
+
+    // // Configura il trasportatore Nodemailer
+    // const transporter = nodemailer.createTransport({
+    //   host: import.meta.env.SMTP_HOST,
+    //   port: 25,
+    //   auth: {
+    //     user: import.meta.env.SMTP_USER,
+    //     pass: import.meta.env.SMTP_PASS
+    //   }
+    // });
+
+    // // 1. Email a info@celyon.it con i dettagli del form
+    // await transporter.sendMail({
+    //   from: "il.tuo.email@gmail.com",
+    //   to: "nicolo.bassi@demia.org",
+    //   subject: "Nuovo modulo inviato",
+    //   text: `Dettagli del modulo:\nNome: ${name}\nCognome: ${surname}\nEmail: ${email}\nTelefono: ${phoneNumber}\nMessaggio: ${message}`
+    // });
+
+    // // 2. Email di ringraziamento all'indirizzo dell'utente
+    // await transporter.sendMail({
+    //   from: "il.tuo.email@gmail.com",
+    //   to: email,
+    //   subject: "Grazie per il tuo messaggio!",
+    //   text: `Ciao ${name},\n\nGrazie per averci contattato! Abbiamo ricevuto il tuo messaggio e ti risponderemo al più presto.\n\nCordiali saluti,\nIl team di Celyon`
+    // });
+
+    // // 3. Email a demiaform@demia.org con solo il nome
+    // await transporter.sendMail({
+    //   from: "il.tuo.email@gmail.com",
+    //   to: "demiaform@gmail.com",
+    //   subject: "Nuovo contatto ricevuto",
+    //   text: `Nome del contatto: ${name}`
+    // });
+
+    console.log("Tutte le email inviate con successo.");
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Errore nell'invio delle email: ", error.message);
+    }
+  }
+}
+---
+
+<Layout title="asd" description="asd">
+  <section class="p-body pt-[2.5vw]" id="content">
+    <Header />
+  </section>
+  <section class="mt-[10.194vw] p-body flex flex-col lg:flex-row lg:justify-between lg:items-end">
+    <div>
+      <h3 class="title-section text-bianco">
+        Inizia a
+        <span class="changeword">
+          <div class="animated-word text-sfumatura">creare</div>
+        </span><br />
+        con noi <img src="img/page/about/icon-valori.png" alt="" class="hidden w-[10.347vw] relative -top-[0.372vw]" />
+      </h3>
+    </div>
+    <div>
+      <p class="text-bianco lg:text-end mt-[24px] lg:mt-0">
+        qui una frase di giusto tre<br />
+        righe che introduca il fatto<br />
+        che sia una pagina contatti
+      </p>
+    </div>
+  </section>
+
+  <section class="p-body py-[100px] lg:py-[10.417vw] lg:w-2/3">
+    <p class="title-small font-[700] text-bianco">mi interessa...</p>
+    <div class="pt-[24px] lg:pt-[3.056vw]">
+      <form id="contact-form" action="" method="post">
+        <div class="flex lg:flex-col flex-wrap gap-[1.667vw]">
+          <div class="flex lg:flex-row flex-wrap gap-[1.667vw]">
+            <div>
+              <input type="checkbox" id="servizio1" name="brandstrategy" />
+              <label class="custom-checkbox" for="servizio1">brand strategy</label>
+            </div>
+            <div>
+              <input type="checkbox" id="servizio2" name="sitoweb" />
+              <label class="custom-checkbox" for="servizio2">sito web</label>
+            </div>
+            <div>
+              <input type="checkbox" id="servizio3" name="e-commerce" />
+              <label class="custom-checkbox" for="servizio3">e-commerce</label>
+            </div>
+            <div>
+              <input type="checkbox" id="servizio4" name="graphicDesign" />
+              <label class="custom-checkbox" for="servizio4">graphicdesign</label>
+            </div>
+          </div>
+          <div class="flex lg:flex-row flex-wrap gap-[1.667vw]">
+            <div>
+              <input type="checkbox" id="servizio5" name="socialeadvertising" />
+              <label class="custom-checkbox" for="servizio5">social e advertising</label>
+            </div>
+            <div>
+              <input type="checkbox" id="servizio6" name="consulenzamarketing" />
+              <label class="custom-checkbox" for="servizio6">consulenza marketing</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-[60px] lg:pt-[5.556vw]">
+          <div class="flex flex-col lg:gap-[2.222vw]">
+            <div class="flex flex-col lg:flex-row lg:gap-[10.417vw]">
+              <div class="lg:w-1/2 relative">
+                <input type="text" name="name" placeholder=" " required />
+                <label for="name" class="text-bianco label-input">nome *</label>
+              </div>
+              <div class="lg:w-1/2 relative">
+                <input type="text" name="surname" placeholder=" " required />
+                <label for="surname" class="text-bianco label-input">cognome *</label>
+              </div>
+            </div>
+            <div class="flex flex-col lg:flex-row lg:gap-[10.417vw]">
+              <div class="lg:w-1/2 relative">
+                <input type="email" name="email" placeholder=" " required />
+                <label for="email" class="text-bianco label-input">email *</label>
+              </div>
+              <div class="lg:w-1/2 relative">
+                <input type="number" name="phoneNumber" placeholder=" " required />
+                <label for="phoneNumber" class="text-bianco label-input">telefono *</label>
+              </div>
+            </div>
+            <div class="flex flex-col lg:flex-row lg:gap-[10.417vw]">
+              <div class="w-full relative">
+                <input type="text" name="message" placeholder=" " required />
+                <label for="message" class="text-bianco label-input">messaggio *</label>
+              </div>
+            </div>
+            <div class="flex flex-row items-center lg:gap-[0.833vw] gap-[16px] py-[44px] lg:py-[3.056vw]">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <label class="custom-checkbox custom-privacy" for="privacy"></label>
+              <p class="text-bianco !opacity-100 !top-0 lg:text-[0.83vw] text-[16px]">
+                Acconsento al trattamento dei dati personali come specificato nella
+                <a href="https://www.iubenda.com/privacy-policy/35285413" class="font-[600] z-[20] inline-block hover-target">Privacy Policy</a>
+              </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-start">
+              <button type="submit" class="big-button text-bianco cursor-pointer">Invia richiesta<span></span></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="bg-bianco p-body py-[150px] lg:py-[10.417vw]">
+    <div class="flex flex-row justify-between border-nero lg:border-b-[0.139vw] border-b-[1px] pb-[8px] lg:pb-[0.833vw]">
+      <p class="text-nero font-[700]">altra cosina da scrivere qui</p>
+      <div class="flex flex-row gap-[0.833vw]">
+        <p class="text-nero font-[700]">
+          <span class="text hover-target">dove trovarci</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex flex-col lg:flex-row bg-bianco lg:pb-[10.417vw] lg:justify-between">
+    <div class="lg:w-2/3">
+      <img src="img/page/contatti/contatti.jpg" alt="" class="h-[400px] lg:h-auto object-cover lg:rounded-none rounded-e-[16px]" />
+    </div>
+    <div class="px-[16px] lg:px-0 lg:mr-[2.222vw] mt-[60px] lg:mt-0 flex flex-col lg:items-end items-start">
+      <p class="text-nero lg:text-end text-[24px] lg:text-[2.222vw] font-[400] leading-[28px] lg:leading-[2.5vw]">
+        via nazario sauro 513<br />
+        55100 lucca
+      </p>
+      <div class="lg:w-fit lg:mt-[1.111vw] mt-[16px]">
+        <a href="" class="sub-link sub-link-light text-nero flex gap-[8px] lg:gap-[0.556vw]"
+          >vedi su mappa
+          <img src="img/assets/icon-arrow-dark.svg" class="lg:w-[0.972vw] w-[14px]" />
+        </a>
+      </div>
+      <div class="mt-[44px] lg:mt-[3.056vw] lg:text-end flex flex-col gap-[1.111vw]">
+        <a href="tel:+390583406479" class="text-nero lg:text-end text-[36px] lg:text-[2.222vw] font-[400] lg:leading-[2.5vw] underline">+39 0583 406479</a>
+        <a href="mailto:info@demia.org" class="text-nero lg:text-end text-[36px] lg:text-[2.222vw] font-[400] lg:leading-[2.5vw] underline">info@demia.org</a>
+      </div>
+    </div>
+  </div>
+  <section class="bg-bianco p-body pb-[150px] pt-[100px] lg:pt-0 lg:pb-[10.417vw]">
+    <div class="bg-grigio py-[10.417vw] p-body rounded-[16px] lg:rounded-[1.667vw] flex flex-col lg:flex-row justify-between">
+      <div>
+        <p class="text-nero font-[700] title">
+          ti piacerebbe<br class="hidden lg:block" />
+          lavorare con<br class="lg:hidden block" /> noi?
+        </p>
+      </div>
+      <div>
+        <p class="text-[24px] lg:text-[3.056vw] leading-[28px] lg:leading-[3.333vw] text-nero mt-[60px] lg:mt-0">
+          invia una mail con il cv a<br />
+          <a href="mailto:candidature@demia.org" class="text-sfumatura font-[700]">candidature@demia.org</a>
+        </p>
+        <p class="text-nero lg:mt-[2.222vw] mt-[24px]">
+          Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat<br class="hidden lg:block" />
+          odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam<br class="hidden lg:block" />
+          nulla.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script src="../../public/libs/contatti.js"></script>
+</Layout>

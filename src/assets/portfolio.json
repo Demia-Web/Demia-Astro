@@ -1,0 +1,128 @@
+[
+  {
+    "title": "marameo",
+    "tags": ["branding", "graphicdesign", "sitoweb", "social"],
+    "background": "/video/home-portfolio/marameo.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "are",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb", "ux"],
+    "background": "/video/home-portfolio/are.mp4",
+    "link": "/Portfolio/Are"
+  },
+  {
+    "title": "geal",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/geal.mp4",
+    "link": "/Portfolio/Geal"
+  },
+  {
+    "title": "de-core",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/decore.mp4",
+    "link": "/Portfolio/De-Core"
+  },
+  {
+    "title": "sadas",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/sadas.mp4",
+    "link": "/Portfolio/sadas"
+  },
+  {
+    "title": "estix",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/estix.mp4",
+    "link": "/Portfolio/Estix"
+  },
+  {
+    "title": "gal",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb", "ux"],
+    "background": "/video/home-portfolio/gal.mp4",
+    "link": "/Portfolio/Gal"
+  },
+  {
+    "title": "neonform",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/neonform.mp4",
+    "link": "/Portfolio/neonform"
+  },
+  {
+    "title": "martinelli",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/martinelli.mp4",
+    "link": "/Portfolio/Martinelli"
+  },
+  {
+    "title": "pontlab",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/pontlab.mov",
+    "link": "google.com"
+  },
+  {
+    "title": "fattoria di<br>magliano",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/fattoria.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "celyon",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/celyon.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "menici",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/menici.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "tecno<br>trasmissioni",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/tecnotrasmissioni.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "winet",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/winet.mp4",
+    "link": "google.com"
+  },
+  {
+    "title": "mevas",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb", "ux"],
+    "background": "/video/home-portfolio/mevas.mp4",
+    "link": "/Portfolio/mevas"
+  },
+  {
+    "title": "quindee",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb", "ux"],
+    "background": "/video/home-portfolio/quindee.mov",
+    "link": "/Portfolio/quindee"
+  },
+  {
+    "title": "alpipan",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/alpipan.mp4",
+    "link": "/Portfolio/Alpipan"
+  },
+  {
+    "title": "perillo",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/perillo.mp4",
+    "link": "/Portfolio/perillo"
+  },
+  {
+    "title": "mdv",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/mdv.mp4",
+    "link": "/Portfolio/mdv"
+  },
+  {
+    "title": "esobit",
+    "tags": ["brandstrategy", "graphicdesign", "sitoweb"],
+    "background": "/video/home-portfolio/esobit.mp4",
+    "link": "/Portfolio/Esobit"
+  }
+]

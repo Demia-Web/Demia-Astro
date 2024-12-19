@@ -2,8 +2,6 @@ import SplitType from "split-type";
 
 import { toggleLenis } from "./main.js";
 
-console.log("DIO CANE");
-
 // TESTO CIAO
 document.addEventListener("astro:page-load", () => {
   const splitText = new SplitType(".ciao", { types: "chars" });
@@ -42,19 +40,19 @@ document.addEventListener("astro:page-load", () => {
     // Configurazione per desktop (larghezza >= 768px)
     "(min-width: 768px)": function () {
       gsap.to("#list-about", {
-        xPercent: -130, // Sposta l'elemento a sinistra
+        xPercent: -126, // Sposta l'elemento a sinistra
         ease: "power3.out",
         scrollTrigger: {
           trigger: "#list-about", // Trigger principale
           start: "top top", // Inizio quando #list-about è in cima alla viewport
-          end: "bottom", // Fine alla fine dell'elemento
-          scrub: true, // Sincronizza con lo scroll
+          end: "bottom+=500", // Fine alla fine dell'elemento
+          scrub: 2, // Sincronizza con lo scroll
           pin: true, // Fissa l'elemento
           pinSpacing: true, // Mantiene lo spazio durante il pin
           anticipatePin: 1, // Anticipa l'effetto pin
           invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
           onUpdate: (self) => {
-            gsap.ticker.lagSmoothing(1000, 16); // Minimizza lag durante scroll rapidi
+            gsap.ticker.lagSmoothing(3000, 16); // Minimizza lag durante scroll rapidi
           }
         }
       });
@@ -63,16 +61,16 @@ document.addEventListener("astro:page-load", () => {
     // Configurazione per mobile (larghezza < 768px)
     "(max-width: 767px)": function () {
       gsap.to("#list-about", {
-        xPercent: -200, // Riduce il movimento per mobile
+        xPercent: -306, // Riduce il movimento per mobile
         ease: "power3.out",
         scrollTrigger: {
           trigger: "#list-about", // Trigger principale
-          start: "top top", // Inizio alla cima della viewport
+          start: "top 20%", // Inizio alla cima della viewport
           end: "bottom+=200", // Estende la durata per un'esperienza più fluida
           scrub: true, // Sincronizza con lo scroll
           pin: true, // Fissa l'elemento
           pinSpacing: true, // Rimuove spazio extra per mobile
-          anticipatePin: 0.5, // Riduce l'anticipazione per prestazioni migliori
+          anticipatePin: 1, // Riduce l'anticipazione per prestazioni migliori
           invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
           onUpdate: (self) => {
             gsap.ticker.lagSmoothing(500, 16); // Ottimizza per scroll più rapidi
@@ -219,6 +217,66 @@ document.addEventListener("astro:page-load", () => {
   });
 });
 
+// ANIMAZIONE VTB
+document.addEventListener("astro:page-load", () => {
+  const tl = gsap.timeline();
+  // Applica un'animazione di scaling da 0 a 1
+  tl.fromTo(
+    "#box-ciao",
+    { scale: 0, opacity: 0 }, // Stato iniziale: scalato a 0
+    { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out", delay: 1 } // Stato finale: scala a 1 in 1.5 secondi
+  ).fromTo(
+    ".vtb",
+    { opacity: 0 },
+    { opacity: 1, duration: 3, ease: "power3.out" },
+    "+=0" // Avvia subito dopo la prima animazione
+  );
+});
+
+// ANIMAZIONE DON'T QUIT
+document.addEventListener("astro:page-load", () => {
+  gsap.from("#text-dontquit", {
+    scrollTrigger: {
+      trigger: "#text-dontquit",
+      start: "top 80%", // Quando il blocco è visibile all'80% nella viewport
+      toggleActions: "play reverse play reverse", // Aggiunge e rimuove la classe durante l'entrata e l'uscita
+      onEnter: () => {
+        setTimeout(() => {
+          document.querySelectorAll("#text-dontquit span").forEach((span) => {
+            span.classList.add("text-sfumatura");
+            span.classList.add("saturate-[1.3]");
+          });
+        }, 1000); // Delay di 1 secondo
+      },
+      onLeaveBack: () => {
+        // Rimuove la classe quando si scrolla indietro
+        document.querySelectorAll("#text-dontquit span").forEach((span) => {
+          span.classList.remove("text-sfumatura");
+        });
+      }
+    }
+  });
+});
+
+// MARQUEE
+document.addEventListener("astro:page-load", () => {
+  setTimeout(() => {
+    // Selezioniamo il contenitore del testo
+    const marqueeTeam = document.querySelector(".marquee-team");
+
+    // Duplicazione del contenuto per l'effetto infinito
+    marqueeTeam.innerHTML += marqueeTeam.innerHTML;
+
+    // Animazione GSAP
+    gsap.to(".marquee-team", {
+      xPercent: -50, // Sposta di metà del contenuto duplicato
+      ease: "none", // Mantiene un movimento fluido e costante
+      repeat: -1, // Ripete all'infinito
+      duration: 20 // Durata, puoi regolare in base alla velocità desiderata
+    });
+  }, 2000);
+});
+
 // AUTOSTART VIDEO
 document.addEventListener("astro:page-load", () => {
   setTimeout(() => {
@@ -295,6 +353,7 @@ document.addEventListener("astro:page-load", () => {
   });
 });
 
+// POPUP TEAM
 document.addEventListener("astro:page-load", () => {
   document.querySelectorAll(".box-team").forEach(function (button) {
     button.addEventListener("click", function () {
@@ -379,4 +438,84 @@ document.addEventListener("astro:page-load", () => {
   }
 
   document.getElementById("closePopup").addEventListener("click", closePopup);
+});
+
+// ANIMAZIONE LED
+document.addEventListener("astro:page-load", () => {
+  const myElement = document.getElementById("onair");
+  const circleonair = document.getElementById("circle-onair");
+  const imgonair = document.getElementById("imgonair");
+  const ledonair = document.getElementById("ledonair");
+
+  myElement.addEventListener("click", function () {
+    circleonair.classList.toggle("bg-sfumatura");
+    circleonair.classList.toggle("move-right");
+    imgonair.classList.toggle("opacity-15");
+    ledonair.classList.toggle("bg-[#FB72BD]");
+    ledonair.classList.toggle("shadow-ledon");
+    ledonair.classList.toggle("shadow-ledoff");
+    ledonair.classList.toggle("flicker");
+  });
+});
+
+// SWIPER
+import Swiper from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+document.addEventListener("astro:page-load", () => {
+  const swiper = new Swiper(".swiper-task", {
+    loop: false,
+    draggable: true,
+    breakpoints: {
+      0: {
+        spaceBetween: 16,
+        slidesPerView: 1.1
+      },
+      600: {
+        spaceBetween: 20,
+        slidesPerView: 3
+      },
+      1024: {
+        spaceBetween: 20,
+        slidesPerView: 3
+      }
+    }
+  });
+});
+
+document.addEventListener("astro:page-load", () => {
+  const customCursor = document.getElementById("custom-cursor");
+  const images2 = document.querySelectorAll(".team");
+
+  images2.forEach((img) => {
+    img.addEventListener("mouseenter", () => {
+      customCursor.style.display = "flex";
+      document.addEventListener("mousemove", moveCursor);
+    });
+
+    img.addEventListener("mouseleave", () => {
+      customCursor.style.display = "none";
+      document.removeEventListener("mousemove", moveCursor);
+    });
+  });
+
+  document.addEventListener("mousedown", () => {
+    customCursor.classList.add("click-scale");
+  });
+
+  document.addEventListener("mouseup", () => {
+    customCursor.classList.remove("click-scale");
+  });
+
+  function moveCursor(e) {
+    const cursorX = e.clientX - customCursor.offsetWidth / 20;
+    const cursorY = e.clientY - customCursor.offsetHeight / 20;
+
+    gsap.to(customCursor, {
+      duration: 0.1,
+      left: cursorX,
+      top: cursorY,
+      ease: "none"
+    });
+  }
 });

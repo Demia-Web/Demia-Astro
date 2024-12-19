@@ -1,0 +1,99 @@
+---
+import Layout from "../layout/Layout.astro";
+import Header from "../includes/Header.astro";
+
+import portfolioData from "../assets/portfolio.json";
+---
+
+<Layout title="asd" description="asd">
+  <div id="overlayportfolio"></div>
+  <section class="p-body pt-[2.5vw]" id="content">
+    <Header />
+  </section>
+  <div>
+    <div class="mt-[7.194vw] flex flex-col p-body">
+      <p class="text-bianco text-[80px] lg:text-[20.833vw] -tracking-[2.4px] lg:-tracking-[0.625vw] font-[700] port leading-[84px] lg:leading-[27.778vw]">portfolio</p>
+    </div>
+  </div>
+  <div class="flex lg:flex-row flex-col lg:justify-between lg:items-center p-body pb-[10.194vw]">
+    <div class="lg:w-1/2 mt-[100px] lg:mt-0">
+      <p class="text-bianco">
+        qui una frase di giusto tre<br class="hidden lg:block" />
+        righe che introduca il fatto<br class="hidden lg:block" />
+        che sia una pagina portfolio
+      </p>
+    </div>
+    <div class="lg:w-1/2 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-[60px] lg:gap-0 mt-[60px] lg:mt-0">
+      <div>
+        <video autoplay loop muted playsinline preload="none" class="lazy-video w-[266px] lg:w-[415px] lg:h-[236px] h-[152px] rounded-[16px] lg:rounded-[1.667vw] object-cover h-full mx-auto video">
+          <source src="video/video-home.mp4" type="video/mp4" class="rounded-lg" />
+        </video>
+      </div>
+      <div>
+        <!-- <img src="img/assets/icon-gradient.svg" alt="" class="w-[45px] lg:w-auto -rotate-90 lg:rotate-0"> -->
+        <svg id="animated-svg" class="w-[45px] lg:w-[4.861vw] -rotate-90 lg:rotate-0" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="paint0" x1="65" y1="34" x2="7" y2="34" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E6007E"></stop>
+              <stop offset="1" stop-color="#F9B000"></stop>
+            </linearGradient>
+            <linearGradient id="paint1" x1="64.6152" y1="35" x2="5.38447" y2="35" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E6007E"></stop>
+              <stop offset="1" stop-color="#F9B000"></stop>
+            </linearGradient>
+            <clipPath id="clip0">
+              <rect width="70" height="70" fill="white" transform="translate(70 70) rotate(-180)"></rect>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip0)">
+            <path d="M65 5L7 63" stroke="url(#paint0)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"></path>
+            <path d="M64.6152 64.6154L5.38446 64.6154L5.38447 5.38461" stroke="url(#paint1)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-between border-bianco lg:border-b-[0.139vw] border-b-[1px] pb-[8px] lg:pb-[0.833vw] mx-[2.222vw]">
+    <p class="text-bianco font-[700]">a noi, le cose, piace farle bene</p>
+    <div class="flex flex-row gap-[0.833vw]">
+      <p class="text-bianco font-[700]">
+        <span class="text hover-target">i nostri servizi</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-[100px] bg-nero pb-[100px] lg:pb-[10.417vw] lg:pt-[10.417vw]">
+    <div id="projects-container" class="grid grid-cols-2 p-body gap-[10px] lg:gap-[1.389vw]">
+      <div class="custom-cursor" id="custom-cursor">
+        <p class="text-bianco mix-blend-esclusion text-[24px]"><img src="/img/assets/icon-arrow.svg" class="-rotate-270 w-[25px]" /></p>
+      </div>
+      {
+        portfolioData.map((cliente) => (
+          <a href={cliente.link} class="box-portfolio">
+            <div class="relative project" data-tags={cliente.tags.join(" ")}>
+              <div class="absolute left-0 top-0 w-full h-full rounded-[16px] lg:rounded-[1.667vw] bg-nero/0" />
+              <video autoplay loop muted playsinline class="w-full object-cover h-[400px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
+                <source src={cliente.background} type="video/mp4" />
+              </video>
+              <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
+                <div>
+                  <p class="text-bianco text-[44px] lg:text-[5vw] leading-[48px] lg:leading-[5.278vw] -tracking-[1.32px] lg:-tracking-[0.15vw] font-[700] mb-[1.667vw]" set:html={cliente.title} />
+                </div>
+                <div class="flex flex-row flex-wrap lg:flex-nowrap gap-[0.694vw]">
+                  {cliente.tags.map((tag) => (
+                    <p class="button-small">{tag}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <!-- <div class="flex flex-row justify-center w-full">
+      <button type="submit" id="load-more-btn" class="big-button-dark text-bianco cursor-pointer"><h3>load more</h3><span></span></button>
+    </div> -->
+  </div>
+  <script src="../../public/libs/portfolio.js"></script>
+</Layout>

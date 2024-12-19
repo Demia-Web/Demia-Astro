@@ -1,0 +1,48 @@
+---
+const buttons = [
+  { href: "/Brand-Strategy", label: "brand strategy" },
+  { href: "/Graphic-Design", label: "graphic design" },
+  { href: "/Web-Development", label: "web development" },
+  { href: "/Digital-Marketing", label: "digital marketing" },
+  { href: "/Media-Production", label: "media production" }
+];
+
+const currentUrl = Astro.url.pathname;
+
+const filteredButtons = buttons.filter((button) => {
+  return button.href !== currentUrl;
+});
+---
+
+<section class="p-body py-[10.147vw]">
+  <div class="flex flex-row justify-between border-bianco lg:border-b-[0.139vw] border-b-[1px] lg:pb-[0.833vw] pb-[8px]">
+    <p class="text-bianco font-[700]">altra cosina da scrivere qui</p>
+    <div class="flex flex-row gap-[8px] lg:gap-[0.833vw]">
+      <p class="text-bianco font-[700]">
+        <span class="text hover-target">lorem ipsum</span>
+      </p>
+    </div>
+  </div>
+  <div class="pt-[100px] lg:pt-[6.944vw] mb-[44px] lg:mb-[3.056vw]">
+    <p class="text-bianco title font-[700]">
+      scopri in cosa altro<br />
+      possiamo aiutarti
+    </p>
+  </div>
+  <div class="flex lg:flex-row flex-col gap-[12px] lg:gap-[1.667vw]">
+    {
+      filteredButtons.map((button) => (
+        <a href={button.href} class="">
+          <button class="big-button-small flex flex-row items-center gap-[12px] lg:gap-[0.833vw]">
+            {button.label}
+            <span />
+            <div class="arrow-box-small relative overflow-hidden w-[19px] lg:w-[1.319vw] gap-[0.833vw]">
+              <img src="img/assets/icon-arrow.svg" alt="" class="w-[19px] lg:w-[1.319vw] img img-top" />
+              <img src="img/assets/icon-arrow-dark.svg" alt="" class="w-[19px] lg:w-[1.319vw] img img-bottom" />
+            </div>
+          </button>
+        </a>
+      ))
+    }
+  </div>
+</section>

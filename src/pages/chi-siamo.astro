@@ -1,7 +1,23 @@
 ---
+import Header from "../includes/Header.astro";
 import Layout from "../layout/Layout.astro";
 
-async function fetchTeams() {
+interface Team {
+  [x: string]: any;
+  id: number;
+  documentId: string;
+  Nome: string;
+  posizione_lavorativa: string;
+  Descrizione_corta: string;
+  descrizione_lunga: string;
+  Emoji: string;
+  Order: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+async function fetchTeams(): Promise<Team[]> {
   const url = `${import.meta.env.PUBLIC_URL_TOKEN}/api/teams?populate=*`;
   const response = await fetch(url, {
     headers: {
@@ -9,17 +25,21 @@ async function fetchTeams() {
     }
   });
   const data = await response.json();
-  return data.data;
+  // Ordinare i team in base al campo 'Order'
+  return data.data.sort((a: Team, b: Team) => a.Order - b.Order);
 }
+
 const teams = await fetchTeams();
 ---
 
 <Layout title="asd" description="asd">
+  <div id="overlayportfolio"></div>
   <section class="p-body pt-[2.5vw]" id="content">
-    <!--?php include 'includes/header.php'?-->
+    <Header />
+
     <div class="lg:mt-[10.194vw] mt-[75px] flex flex-col h-[60vh] lg:h-[100vh] justify-center relative">
-      <p class="text-bianco text-[20.833vw] -tracking-[0.625vw] font-[700] text-center z-10 ciao absolute leading-[27.778vw] -top-[5vw] left-0 right-0">ciao</p>
-      <div class="rounded-[1.667vw] w-full absolute top-[14vw]" id="box-ciao"></div>
+      <p class="text-bianco text-[120px] lg:text-[20.833vw] -tracking-[0.625vw] font-[700] text-center z-10 ciao absolute leading-[27.778vw] -top-[5vw] left-0 right-0">ciao</p>
+      <div class="rounded-[16px] lg:rounded-[1.667vw] w-full absolute top-[14vw]" id="box-ciao"></div>
     </div>
     <div class="flex flex-col lg:flex-row items-end justify-between gap-[150px] lg:gap-[100px]">
       <div class="lg:order-1 order-2">
@@ -34,10 +54,11 @@ const teams = await fetchTeams();
   </section>
 
   <section class="p-body flex flex-row gap-[11px] lg:gap-[1.389vw] pt-[100px] pb-[150px] lg:py-[10.417vw]" id="list-about">
-    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
-    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
-    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
-    <img src="img/page/home/incontra-il-team.jpg" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/about/about-1.webp" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/about/about-2.webp" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/about/about-3.webp" class="h-[340px] lg:h-[41.667vw] w-[247px] lg:w-[30.208vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/about/about-4.webp" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
+    <img src="img/page/about/about-5.webp" class="h-[340px] lg:h-[41.667vw] w-[410px] lg:w-[50.139vw] rounded-[1.667vw]" alt="" />
   </section>
 
   <section class="p-body pb-[10.194vw]">
@@ -49,11 +70,11 @@ const teams = await fetchTeams();
     </p>
   </section>
 
-  <section class="px-[13.889vw] py-[10.194vw]" id="text-dontquit">
-    <p class="text-[#2d2d2d] text-[20.833vw] leading-[21.111vw] font-[800]">
+  <section class="px-[13.889vw] pb-[150px] lg:py-[10.194vw]" id="text-dontquit">
+    <p class="text-[#2d2d2d] text-[120px] lg:text-[20.833vw] leading-[21.111vw] font-[800]">
       <span>do</span>n't
     </p>
-    <p class="text-[#2d2d2d] text-[20.833vw] leading-[21.111vw] font-[800] text-center pb-[10.194vw]">
+    <p class="text-[#2d2d2d] text-[120px] lg:text-[20.833vw] leading-[21.111vw] font-[800] text-right lg:text-center pb-[10.194vw]">
       qu<span>it</span>
     </p>
   </section>
@@ -104,7 +125,7 @@ const teams = await fetchTeams();
         </div>
       </div>
     </div>
-    <!-- <div class="block lg:hidden">
+    <div class="lg:hidden block">
       <div class="swiper swiper-task mt-[60px]">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -136,7 +157,7 @@ const teams = await fetchTeams();
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </section>
   <div class="p-body py-[150px] lg:py-[10.417vw]">
     <p class="lg:text-[3.056vw] text-[32px] lg:leading-[3.333vw] leading-[36px] text-bianco font-[400] text-center" id="text-emote-2">
@@ -189,9 +210,12 @@ const teams = await fetchTeams();
     <div class="gap-x-[0.694vw] gap-y-[100px] lg:gap-y-[10.417vw] grid lg:grid-cols-3 grid-cols-1">
       {
         teams.length ? (
-          teams.map((team: { id: string | null | undefined; Video: { url: any }; Nome: unknown; posizione_lavorativa: unknown }) => (
+          teams.map((team: Team) => (
             <div class="box-team cursor-pointer" data-target={`${team.id}`}>
-              <div class="team" id={team.id}>
+              <div class="team">
+                <div class="custom-cursor cursor-conosci" id="custom-cursor">
+                  <p class="text-bianco mix-blend-difference text-[24px]">conosci!</p>
+                </div>
                 <video class="team-video" src={`${import.meta.env.PUBLIC_URL_TOKEN}${team.Video.url}`} muted playsinline loop preload="metadata" />
               </div>
               <div class="mt-[24px] lg:mt-[2.222vw]">
@@ -270,247 +294,6 @@ const teams = await fetchTeams();
   </section>
 
   <div class="mx-[16px] lg:mx-[2.222vw] mt-[100px] lg:mt-[10.417vw] mb-[100px] lg:mb-0 rounded-[16px] lg:rounded-[1.667vw" id="lavora-con-noi"></div>
-
-  <!-- ANIMAZIONE VTB
-  <script>
-    const tl = gsap.timeline();
-    // Applica un'animazione di scaling da 0 a 1
-    tl.fromTo(
-      "#box-ciao",
-      { scale: 0, opacity: 0 }, // Stato iniziale: scalato a 0
-      { scale: 1, opacity: 1, duration: 1.4, ease: "power3.out", delay: 1 } // Stato finale: scala a 1 in 1.5 secondi
-    )
-
-      .fromTo(
-        ".vtb",
-        { opacity: 0 },
-        { opacity: 1, duration: 3, ease: "power3.out" },
-        "+=0" // Avvia subito dopo la prima animazione
-      );
-  </script>
-
-  <!-- ANIMAZIONE DON'T QUIT -->
-  <!-- <script>
-    // Applica l'animazione quando il blocco diventa visibile con delay di 1 secondo
-    gsap.from("#text-dontquit", {
-      scrollTrigger: {
-        trigger: "#text-dontquit",
-        start: "top 80%", // Quando il blocco è visibile all'80% nella viewport
-        toggleActions: "play reverse play reverse", // Aggiunge e rimuove la classe durante l'entrata e l'uscita
-        onEnter: () => {
-          setTimeout(() => {
-            document.querySelectorAll("#text-dontquit span").forEach((span) => {
-              span.classList.add("text-sfumatura");
-              span.classList.add("saturate-[1.3]");
-            });
-          }, 1000); // Delay di 1 secondo
-        },
-        onLeaveBack: () => {
-          // Rimuove la classe quando si scrolla indietro
-          document.querySelectorAll("#text-dontquit span").forEach((span) => {
-            span.classList.remove("text-sfumatura");
-          });
-        }
-      }
-    });
-  </script> -->
-
-  <!-- ANIMAZIONE MARQUEE -->
-  <!-- <script>
-    setTimeout(() => {
-      // Selezioniamo il contenitore del testo
-      const marqueeTeam = document.querySelector(".marquee-team");
-
-      // Duplicazione del contenuto per l'effetto infinito
-      marqueeTeam.innerHTML += marqueeTeam.innerHTML;
-
-      // Animazione GSAP
-      gsap.to(".marquee-team", {
-        xPercent: -50, // Sposta di metà del contenuto duplicato
-        ease: "none", // Mantiene un movimento fluido e costante
-        repeat: -1, // Ripete all'infinito
-        duration: 20 // Durata, puoi regolare in base alla velocità desiderata
-      });
-    }, 2000);
-  </script>  -->
-
-  <!-- ANIMAZIONE TEAM CARDS POPUP -->
-  <!-- <script>
-        // Funzione per aprire il popup con i dati dinamici (nessuna modifica necessaria qui)
-        function openPopup(id) {
-            const member = teamData[id];
-            disableLenis();
-            if (member) {
-                document.getElementById('popupName').innerText = member.name;
-                document.getElementById('popupRole').innerText = member.role;
-                document.getElementById('popupDescription').innerText = member.description;
-                document.getElementById('popupDescription2').innerText = member.description2;
-                document.getElementById('popemoji').innerText = member.emoji;
-                document.getElementById('popupvideo').src = member.video;
-
-                const popup = document.getElementById('teamPopup');
-                const overlay = document.getElementById('overlay');
-                overlay.classList.remove('hidden');
-                popup.classList.remove('hidden');
-                document.body.classList.add('popup-open');
-
-                setTimeout(() => {
-                    overlay.classList.add('show');
-                    popup.classList.add('active');
-                }, 10);
-            }
-        }
-
-        // Funzione per chiudere il popup
-        function closePopup() {
-            enableLenis();
-            const popup = document.getElementById('teamPopup');
-            const overlay = document.getElementById('overlay');
-
-            popup.classList.remove('active');
-            overlay.classList.remove('show');
-
-            setTimeout(() => {
-                popup.classList.add('hidden');
-                overlay.classList.add('hidden');
-                document.body.classList.remove('popup-open');
-            }, 300);
-        }
-
-        // Aggiungi gli event listener ai membri del team per aprire i popup (già implementato)
-        document.getElementById('danielcosci').addEventListener('click', function() {
-            openPopup('danielcosci');
-        });
-        document.getElementById('elenacastellacci').addEventListener('click', function() {
-            openPopup('elenacastellacci');
-        });
-        document.getElementById('diegoricci').addEventListener('click', function() {
-            openPopup('diegoricci');
-        });
-        document.getElementById('danieleandreotti').addEventListener('click', function() {
-            openPopup('danieleandreotti');
-        });
-        document.getElementById('federicarizzo').addEventListener('click', function() {
-            openPopup('federicarizzo');
-        });
-        document.getElementById('alessioconsoloni').addEventListener('click', function() {
-            openPopup('alessioconsoloni');
-        });
-        document.getElementById('brunosimonini').addEventListener('click', function() {
-            openPopup('brunosimonini');
-        });
-        document.getElementById('davidemancino').addEventListener('click', function() {
-            openPopup('davidemancino');
-        });
-        document.getElementById('carlottamannini').addEventListener('click', function() {
-            openPopup('carlottamannini');
-        });
-        document.getElementById('rusiruattanayaka').addEventListener('click', function() {
-            openPopup('rusiruattanayaka');
-        });
-        document.getElementById('dilettafruzzetti').addEventListener('click', function() {
-            openPopup('dilettafruzzetti');
-        });
-        document.getElementById('martascaravilli').addEventListener('click', function() {
-            openPopup('martascaravilli');
-        });
-
-        // Listener per chiudere il popup (già implementato)
-        document.getElementById('closePopup').addEventListener('click', closePopup);
-        document.getElementById('overlay').addEventListener('click', closePopup);
-    </script> -->
-
-  <!-- ANIMAZIONE AUTOSTART VIDEO
-  <script>
-    setTimeout(() => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Funzione per far partire i video
-      function playVideosInRow(row) {
-        const videos = row.querySelectorAll(".team-video");
-        videos.forEach((video) => {
-          video.play();
-        });
-      }
-
-      // Funzione per fermare i video
-      function pauseVideosInRow(row) {
-        const videos = row.querySelectorAll(".team-video");
-        videos.forEach((video) => {
-          video.pause();
-          video.currentTime = 0; // Resetta il video all'inizio
-        });
-      }
-
-      // Seleziona tutte le righe
-      const rows = document.querySelectorAll(".box-team");
-
-      rows.forEach((row, index) => {
-        ScrollTrigger.create({
-          trigger: row,
-          start: "top 50%", // Quando la riga entra nella viewport
-          end: "bottom 20%", // Quando la riga esce dalla viewport
-          onEnter: () => {
-            playVideosInRow(row);
-          },
-          onLeave: () => {
-            pauseVideosInRow(row);
-          },
-          onEnterBack: () => {
-            playVideosInRow(row);
-          },
-          onLeaveBack: () => {
-            pauseVideosInRow(row);
-          }
-        });
-      });
-    }, 2000);
-  </script>
-
-  <!-- FORZATURA SCROLL TEAM 
-  <script>
-  //   // Funzione per forzare lo scroll su un elemento specifico
-  //   function forceScrollOnElement(className) {
-  //     const scrollElement = document.querySelector(className);
-
-  //     if (!scrollElement) return; // Esce se l'elemento non è trovato
-
-  //     // Aggiungi un listener per l'evento di scroll
-  //     scrollElement.addEventListener("wheel", function (event) {
-  //       // Impedisce lo scroll del body
-  //       event.preventDefault();
-
-  //       // Scrolla l'elemento stesso, dando priorità allo scroll verticale
-  //       scrollElement.scrollTop += event.deltaY;
-  //     });
-
-  //     // Aggiungi un listener per il tocco su dispositivi mobili
-  //     scrollElement.addEventListener("touchmove", function (event) {
-  //       event.preventDefault();
-  //       scrollElement.scrollTop += event.touches[0].clientY;
-  //     });
-  //   }
-
-  //   // Attiva lo scroll forzato sull'elemento con la classe ".popteam-content"
-  //   forceScrollOnElement(".popteam-content");
-</script>
-
-  <script>
-    const myElement = document.getElementById("onair");
-    const circleonair = document.getElementById("circle-onair");
-    const imgonair = document.getElementById("imgonair");
-    const ledonair = document.getElementById("ledonair");
-
-    myElement.addEventListener("click", function () {
-      circleonair.classList.toggle("bg-sfumatura");
-      circleonair.classList.toggle("move-right");
-      imgonair.classList.toggle("opacity-15");
-      ledonair.classList.toggle("bg-[#FB72BD]");
-      ledonair.classList.toggle("shadow-ledon");
-      ledonair.classList.toggle("shadow-ledoff");
-      ledonair.classList.toggle("flicker");
-    });
-  </script> -->
 
   <script src="../../public/libs/chi-siamo.js"></script>
 </Layout>

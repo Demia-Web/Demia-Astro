@@ -6,8 +6,6 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
-console.log("DIO FRANCO");
-
 // Lenis
 
 const lenis = new Lenis({
@@ -146,4 +144,26 @@ gsap.to(".marquee-inner", {
   ease: "none",
   repeat: -1,
   duration: 20
+});
+
+document.addEventListener("astro:page-load", () => {
+  const overlay = document.getElementById("overlayportfolio");
+
+  if (overlay) {
+    setTimeout(() => overlay.classList.add("fade-out"), 100);
+  }
+
+  const links = document.querySelectorAll(".portfolio-link");
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (overlay) {
+        overlay.classList.remove("fade-out");
+      }
+
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 500);
+    });
+  });
 });

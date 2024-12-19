@@ -1,0 +1,128 @@
+---
+import Divano from "../../components/Divano.astro";
+import SliderPortfolio from "../../components/sliderPortfolio.astro";
+import Header from "../../includes/Header.astro";
+import Layout from "../../layout/Layout.astro";
+---
+
+<Layout title="asd" description="asd">
+  <div id="overlayportfolio"></div>
+  <section class="p-body pt-[2.5vw]" id="content">
+    <Header />
+  </section>
+
+  <section class="lg:mt-[10.194vw] mt-[150px] p-body" id="pageWrapper">
+    <div class="lg:pb-[3.056vw] pb-[44px]">
+      <h3 class="title-section text-bianco reveal-title !leading-[9.611vw]">gal</h3>
+    </div>
+    <div class="w-full border-b border-b-bianco line-anim"></div>
+    <div class="flex lg:flex-row flex-col lg:mt-[3.056vw] mt-[44px] items-center">
+      <div class="lg:w-1/2 w-full">
+        <p class="text-bianco max-w-[27.778vw] reveal-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum rem repellat magnam, explicabo ipsam officiis incidunt. Quam dolorem adipisci dolorum minima eius sit dignissimos repudiandae ratione laboriosam ducimus, sunt dolor!</p>
+      </div>
+      <div class="lg:w-1/2 w-full flex flex-row lg:justify-between justify-start lg:gap-[0] gap-[8px] lg:mt-0 mt-[24px]">
+        <p class="tag tag-hero-1">produzione ascensori</p>
+        <p class="tag tag-hero-2">2024</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="lg:rounded-t-[1.667vw] rounded-t-[16px] lg:h-[62.5vw] h-[680px] lg:mt-[6.944vw] mt-[100px] overflow-hidden video-anim">
+    <video autoplay loop muted class="w-full">
+      <source src="../video/video.mp4" type="video/mp4" class="" />
+    </video>
+  </section>
+
+  <section class="lg:mt-[10.417vw] mt-[150px] lg:mb-[20.833vw] mb-[150px] flex lg:flex-row flex-col p-body justify-between">
+    <div class="flex flex-col lg:gap-[1.111vw] gap-[16px] text-bianco font-[300] reveal-text-slide">
+      <p>consulenza marketing</p>
+      <p>naming</p>
+      <p>brand identity</p>
+      <p>seo</p>
+      <p>web design</p>
+    </div>
+    <div class="flex flex-col lg:w-[56.944vw] w-full lg:items-end items-start lg:gap-[2.222vw] gap-[32px] lg:mt-0 mt-[60px]">
+      <p class="title-32 font-[700] text-bianco lg:text-end text-start reveal-text-2">Questa sarà una descrizione dove andremo a dire che cosa abbiamo fatto per il cliente. Deve essere un po’ espressa la vision/mission del cliente. Diciamo che è meglio che non superi le 4 righe su questa risoluzione.</p>
+      <div class="w-fit button-anim">
+        <a href="" class="sub-link sub-link-dark text-bianco flex gap-[0.556vw]"
+          >vai al sito web
+          <img src="../img/assets/icon-arrow.svg" class="w-[0.972vw]" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-[6.944vw] p-body grid grid-cols-12 lg:gap-[1.111vw] gap-[10px]">
+    <img src="../img/portfolio/gal/GAL-Brand-1.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-2.webp" alt="" class="portfolio-immagini col-span-12" />
+  </section>
+
+  <section class="p-body lg:py-[20.833vw] py-[150px] flex flex-col items-center lg:gap-[3.056vw] gap-[44px]">
+    <p class="tag title-tag w-fit">brand identity</p>
+    <p class="text-[3.056vw] leading-[3.333vw] text-bianco font-[400] text-center" id="text-emote">
+      Questa sarà invece una seconda descrizione dove andremo <br />
+      a specificare alcuni aspetti delle lavorazioni oppure potrebbe<br />
+      essere anche una descrizione che segna il passaggio a un’altra<br />
+      tipologia di lavorazione, ad esempio da branding a progetto web. Non supererei comunque le sei righe.
+    </p>
+  </section>
+
+  <section class="p-body lg:mb-[10.417vw] mb-[150px] grid grid-cols-12 lg:gap-[1.111vw] gap-[10px]">
+    <img src="../img/portfolio/gal/GAL-Brand-3.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-4.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-5.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-6.webp" alt="" class="portfolio-immagini col-span-4 row-span-2" />
+    <img src="../img/portfolio/gal/GAL-Brand-7.webp" alt="" class="portfolio-immagini col-span-8 row-span-1" />
+    <img src="../img/portfolio/gal/GAL-Brand-8.webp" alt="" class="portfolio-immagini col-span-4 row-span-1" />
+    <img src="../img/portfolio/gal/GAL-Brand-9.webp" alt="" class="portfolio-immagini col-span-4 row-span-1" />
+    <img src="../img/portfolio/gal/GAL-Brand-10.webp" alt="" class="portfolio-immagini col-span-8 row-span-1" />
+    <img src="../img/portfolio/gal/GAL-Brand-12.webp" alt="" class="portfolio-immagini col-span-4 row-span-2" />
+    <img src="../img/portfolio/gal/GAL-Brand-11.webp" alt="" class="portfolio-immagini col-span-8 row-span-1" />
+  </section>
+
+  <section class="p-body lg:py-[20.833vw] py-[150px] flex lg:flex-row flex-col lg:gap-[13.889vw] gap-[60px] bg-bianco">
+    <div>
+      <p class="title-32 font-[700] testimonial-anim">testimonials</p>
+    </div>
+    <div class="flex flex-col lg:gap-[3.056vw] gap-[44px]">
+      <p class="title-testimonial reveal-text-3">
+        <span class="text-magenta">“</span> Questa sarà la citazione del<br />
+        referente del progetto e non dovrà<br />
+        superare le tre o quattro righe. Ci<br />
+        siamo capiti? <span class="text-giallo">“</span>
+      </p>
+      <div class="w-fit button-testimonial-anim">
+        <a href="" class="sub-link sub-link-light text-nero flex gap-[0.556vw]"
+          >facciamo due chiacchere
+          <img src="../img/assets/icon-arrow-dark.svg" class="w-[0.972vw]" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-body my-[1.111vw] grid grid-cols-12 lg:gap-[1.111vw] gap-[10px]">
+    <img src="../img/portfolio/gal/GAL-Brand-13.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-14.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-15.webp" alt="" class="portfolio-immagini col-span-6" />
+    <img src="../img/portfolio/gal/GAL-Brand-16.webp" alt="" class="portfolio-immagini col-span-6" />
+    <img src="../img/portfolio/gal/GAL-Brand-17.webp" alt="" class="portfolio-immagini col-span-12" />
+    <img src="../img/portfolio/gal/GAL-Brand-18.webp" alt="" class="portfolio-immagini col-span-12" />
+  </section>
+
+  <!--?php include '../includes/divano.php'?-->
+
+  <section class="py-[20.833vw]">
+    <div class="p-body text-bianco flex flex-row items-center gap-[4.167vw]">
+      <img src="../img/assets/arrow-right-bold.svg" alt="" class="h-[10.764vw]" />
+      <p class="big-title">next</p>
+    </div>
+    <div class="pl-[2.222vw]">
+      <div class="swiper swiper-portfolio" id="projects-container"></div>
+    </div>
+  </section>
+
+  <Divano />
+  <SliderPortfolio />
+</Layout>
+
+<script src="../../../public/libs/portfolio-dettaglio.js"></script>

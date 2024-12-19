@@ -7,24 +7,28 @@ import Header from "../includes/Header.astro";
 <Layout title="asd" description="asd">
   <!-- <div class="contatore flex flex-row items-center justify-center">
     <div class="container-foto relative">
-      <img src="img/intro/img1.jpg" alt="Foto 1" class="foto" />
-      <img src="img/intro/img2.jpg" alt="Foto 2" class="foto" />
-      <img src="img/intro/img3.jpg" alt="Foto 3" class="foto" />
-      <img src="img/intro/img4.jpg" alt="Foto 4" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-01.webp" alt="due ragazzi sorridenti che camminano" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-02.webp" alt="ragazze sorridenti che si fanno un selfie al cellulare" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-03.webp" alt="ragazzi sorridenti che parlano tra di loro" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-04.webp" alt="ragazza mora e ragazza bionda sorridenti che si fanno fare una foto" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-05.webp" alt="studio della agenzia di marketing e comunicazione demia" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-06.webp" alt="ufficio della agenzia di marketing e comunicazione demia" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-07.webp" alt="ufficio della agenzia di marketing e comunicazione demia" class="foto" />
+      <img src="img/intro/demia-agenzia-marketing-comunicazione-08.webp" alt="ufficio della agenzia di marketing e comunicazione demia" class="foto" />
     </div>
     <div class="bg-sfumatura h-[1.667vw] w-full absolute z-0"></div>
     <p class="load">0</p>
-  </div>
-  <div class="overlayhero" id="overlayhero">
-    <p class="text-bianco text-[13.889vw] font-[700]" id="word">Ciao</p>
   </div> -->
+  <div class="overlayhero !hidden" id="overlayhero">
+    <p class="text-bianco text-[13.889vw] font-[700]" id="word">ciao</p>
+  </div>
   <section class="p-body pt-[2.5vw] lg:h-auto h-screen" id="content">
     <Header />
-    <div class="lg:mt-[10.194vw] mt-[150px] flex lg:flex-row flex-col lg:items-end lg:justify-between title-hero">
+    <div class="lg:mt-[10.194vw] mt-[56px] flex lg:flex-row flex-col lg:items-end lg:justify-between title-hero">
       <div>
-        <img src="img/assets/titolo-hero-1.svg" alt="" class="title-hero1 w-[53.472vw] saturate-[1.3]" />
-        <img src="img/assets/titolo-hero-2.svg" alt="" class="title-hero2 w-[78.403vw] my-[4px] saturate-[1.3]" />
-        <img src="img/assets/titolo-hero-3.svg" alt="" class="title-hero3 w-[55.139vw] saturate-[1.3]" />
+        <img src="img/assets/titolo-hero-1.svg" alt="" class="title-hero1 w-[250px] lg:w-[53.472vw] saturate-[1.3]" />
+        <img src="img/assets/titolo-hero-2.svg" alt="" class="title-hero2 w-[355px] lg:w-[78.403vw] my-[4px] saturate-[1.3]" />
+        <img src="img/assets/titolo-hero-3.svg" alt="" class="title-hero3 w-[250px] lg:w-[55.139vw] saturate-[1.3]" />
       </div>
       <div id="prevideo"></div>
       <div>
@@ -50,13 +54,13 @@ import Header from "../includes/Header.astro";
         </p>
       </div>
       <div class="link-rapidi-bb mt-[24px] lg:mt-0">
-        <a href="Chi-Siamo" class="button-small">lo studio</a>
-        <a href="Portfolio" class="button-small">portfolio</a>
-        <a href="Contatti" class="button-small">contatti</a>
+        <a href="Chi-Siamo" class="button-small button-home">lo studio</a>
+        <a href="Portfolio" class="button-small button-home">portfolio</a>
+        <a href="Contatti" class="button-small button-home">contatti</a>
       </div>
     </div>
   </section>
-  <div id="video-home" class="lg:pt-[10.417vw] xl:pt-[5.417vw] 2xl:pt-[5.417vw] lg:h-auto h-[100vh] relative mx-auto">
+  <div id="video-home" class="lg:pt-[10.417vw] xl:pt-[5.417vw] 2xl:pt-[5.417vw] lg:h-auto h-[100vh] relative mx-auto lg:mt-0 -mt-[120px]">
     <video autoplay loop muted playsinline preload="none" class="lazy-video lg:w-[30.556vw] object-cover h-full mx-auto video">
       <source src="video/video.mp4" type="video/mp4" class="rounded-lg" />
     </video>
@@ -66,49 +70,51 @@ import Header from "../includes/Header.astro";
   <!-- Sezione successiva con margine indipendente -->
   <section class="p-body flex lg:flex-row flex-col lg:justify-between lg:items-center mt-[150px] lg:mt-[10.417vw]" id="intro-sub-hero">
     <div class="overflow-hidden">
-      <h1 class="text-bianco font-[700] reveal-text">
+      <h1 class="text-bianco font-[700] reveal-text lg:block hidden">
         siamo un’agenzia di<br class="hidden lg:block" />
         marketing che crede<br class="hidden lg:block" />
         nell’indimenticabile.<br class="hidden lg:block" />
         Tu sei pronto a<br class="hidden lg:block" />
         diventarlo?
       </h1>
+      <h1 class="text-bianco font-[700] block lg:hidden">siamo un’agenzia di marketing che crede in tutto ciò che è impossibile. Tu sei pronto a diventarlo?</h1>
     </div>
     <div class="mt-[44px] lg:mt-0">
-      <img src="img/assets/title-sbirciatina.svg" alt="" class="lg:grayscale lg:hover:grayscale-0 transition-all ease-out hover:ease-in duration-[200ms]" />
+      <img src="img/assets/title-sbirciatina.svg" alt="" class="lg:grayscale lg:hover:grayscale-0 transition-all ease-out hover:ease-in duration-[200ms] hidden lg:block" />
+      <img src="img/assets/title-sbirciatina-mobile.svg" alt="" class="block lg:hidden w-full" />
     </div>
   </section>
   <section class="p-body flex flex-row lg:flex-col items-center justify-center py-[150px] lg:mb-0 lg:py-[20.833vw]" id="loghi-clienti">
     <div class="flex lg:flex-row flex-col items-center justify-between gap-[6.944vw] lg:h-[60px] lg:w-2/3 w-1/2">
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/spirulina.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/martinelli.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/celyon.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/crever.svg" alt="logo1" class="logo" />
       </div>
     </div>
     <div class="flex lg:flex-row flex-col items-center justify-between gap-[6.944vw] lg:h-[60px] lg:w-2/3 w-1/2 lg:pt-[6.944vw]">
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-cente h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-cente h-[120px] lg:h-auto">
         <img src="img/loghi/perillo.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/de-core.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/esobit.svg" alt="logo1" class="logo" />
       </div>
-      <div class="lg:w-1/4 w-1/2 flex items-center justify-center h-[80px] lg:h-auto">
+      <div class="lg:w-1/4 w-2/3 flex items-center justify-center h-[120px] lg:h-auto">
         <img src="img/loghi/estix.svg" alt="logo1" class="logo" />
       </div>
     </div>
   </section>
-  <section class="lg:h-[80vh] p-body">
+  <section class="lg:h-[80vh] p-body" id="showreel">
     <video autoplay loop muted playsinline preload="none" class="lazy-video lg:w-[30.556vw] w-full object-cover h-[440px] lg:h-full mx-auto video rounded-[16px] lg:rounded-[1.697vw]">
       <source src="video/video-home.mp4" type="video/mp4" class="" />
     </video>
@@ -121,11 +127,31 @@ import Header from "../includes/Header.astro";
       <div class="relative box-portfolio-home">
         <div class="absolute left-0 top-0 w-full h-full lg:rounded-[1.667vw] rounded-[16px] bg-nero/10"></div>
         <video autoplay loop muted playsinline preload="none" class="lazy-video w-full object-cover h-[440px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
-          <source src="video/home-portfolio/decore.mp4" type="video/mp4" />
+          <source src="video/home-portfolio/are.mp4" type="video/mp4" />
         </video>
         <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
           <div class="mb-[24px] lg:mb-0">
-            <p class="title">de-core</p>
+            <p class="title">are</p>
+          </div>
+          <div class="flex flex-wrap gap-[4px] w-2/3 lg:w-full lg:flex-none">
+            <p class="button-small">marketing strategy</p>
+            <p class="button-small">branding</p>
+            <p class="button-small">web design</p>
+            <p class="button-small">photograpy</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative box-portfolio-home">
+        <div class="custom-cursor" id="custom-cursor">
+          <p class="text-bianco mix-blend-esclusion text-[24px]"><img src="/img/assets/icon-arrow.svg" class="-rotate-270 w-[25px]" /></p>
+        </div>
+        <div class="absolute left-0 top-0 w-full h-full lg:rounded-[1.667vw] rounded-[16px] bg-nero/10"></div>
+        <video autoplay loop muted playsinline preload="none" class="lazy-video w-full object-cover h-[440px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
+          <source src="video/home-portfolio/marameo.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
+          <div class="mb-[24px] lg:mb-0">
+            <p class="title">marameo</p>
           </div>
           <div class="flex flex-wrap gap-[4px] w-2/3 lg:w-full lg:flex-none">
             <p class="button-small">marketing strategy</p>
@@ -138,11 +164,11 @@ import Header from "../includes/Header.astro";
       <div class="relative box-portfolio-home">
         <div class="absolute left-0 top-0 w-full h-full lg:rounded-[1.667vw] rounded-[16px] bg-nero/10"></div>
         <video autoplay loop muted playsinline preload="none" class="lazy-video w-full object-cover h-[440px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
-          <source src="video/home-portfolio/alpipan.mp4" type="video/mp4" />
+          <source src="video/home-portfolio/geal.mp4" type="video/mp4" />
         </video>
         <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
           <div class="mb-[24px] lg:mb-0">
-            <p class="title">alpipan</p>
+            <p class="title">geal</p>
           </div>
           <div class="flex flex-wrap gap-[4px] w-2/3 lg:w-full lg:flex-none">
             <p class="button-small">marketing strategy</p>
@@ -155,28 +181,11 @@ import Header from "../includes/Header.astro";
       <div class="relative box-portfolio-home">
         <div class="absolute left-0 top-0 w-full h-full lg:rounded-[1.667vw] rounded-[16px] bg-nero/10"></div>
         <video autoplay loop muted playsinline preload="none" class="lazy-video w-full object-cover h-[440px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
-          <source src="video/home-portfolio/crever.mp4" type="video/mp4" />
+          <source src="video/home-portfolio/celyon.mp4" type="video/mp4" />
         </video>
         <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
           <div class="mb-[24px] lg:mb-0">
-            <p class="title">crever</p>
-          </div>
-          <div class="flex flex-wrap gap-[4px] w-2/3 lg:w-full lg:flex-none">
-            <p class="button-small">marketing strategy</p>
-            <p class="button-small">branding</p>
-            <p class="button-small">web design</p>
-            <p class="button-small">photograpy</p>
-          </div>
-        </div>
-      </div>
-      <div class="relative box-portfolio-home">
-        <div class="absolute left-0 top-0 w-full h-full lg:rounded-[1.667vw] rounded-[16px] bg-nero/10"></div>
-        <video autoplay loop muted playsinline preload="none" class="lazy-video w-full object-cover h-[440px] lg:h-[41.667vw] rounded-[16px] lg:rounded-[1.667vw]">
-          <source src="video/home-portfolio/martinelli.mp4" type="video/mp4" />
-        </video>
-        <div class="absolute bottom-[32px] lg:bottom-[2.222vw] left-[16px] lg:left-[36px] flex flex-col">
-          <div class="mb-[24px] lg:mb-0">
-            <p class="title">martinelli</p>
+            <p class="title">celyon</p>
           </div>
           <div class="flex flex-wrap gap-[4px] w-2/3 lg:w-full lg:flex-none">
             <p class="button-small">marketing strategy</p>
@@ -233,12 +242,12 @@ import Header from "../includes/Header.astro";
             </div>
           </div>
           <div class="mt-[44px] lg:mt-0">
-            <p class="text-[32px] leading-[36px] -tracking-[0.96px] lg:text-[3.056vw] lg:-tracking-[0.092vw] lg:leading-[3.333vw] font-[700] text-bianco">brand strategy</p>
+            <p class="text-[28px] leading-[36px] -tracking-[0.96px] lg:text-[3.056vw] lg:-tracking-[0.092vw] lg:leading-[3.333vw] font-[700] text-bianco">brand strategy</p>
           </div>
         </div>
         <div class="arrow-box lg:w-1/6 flex flex-row lg:flex-col lg:items-end lg:justify-end overflow-hidden items-start justify-start">
-          <a href="brand-strategy.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
-          <a href="brand-strategy.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
+          <a href="Brand-Strategy"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
+          <a href="Brand-Strategy"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
         </div>
       </div>
       <div class="bg-rosso px-[16px] py-[44px] lg:px-[4.167vw] lg:py-[3.056vw] flex flex-col lg:flex-row lg:items-end items-start rounded-[16px] lg:rounded-[1.667vw] gap-[44px] lg:gap-[6.944vw] card-servizi">
@@ -263,8 +272,8 @@ import Header from "../includes/Header.astro";
           </div>
         </div>
         <div class="arrow-box w-1/6 flex flex-col items-end justify-end overflow-hidden">
-          <a href="graphic-design.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[4.861vw] img img-top" /></a>
-          <a href="graphic-design.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[4.861vw] img img-bottom" /></a>
+          <a href="Graphic-Design"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
+          <a href="Graphic-Design"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
         </div>
       </div>
       <div class="bg-arancio px-[16px] py-[44px] lg:px-[4.167vw] lg:py-[3.056vw] flex flex-col lg:flex-row lg:items-end items-start rounded-[16px] lg:rounded-[1.667vw] gap-[44px] lg:gap-[6.944vw] card-servizi">
@@ -288,8 +297,8 @@ import Header from "../includes/Header.astro";
           </div>
         </div>
         <div class="arrow-box lg:w-1/6 flex flex-row lg:flex-col lg:items-end lg:justify-end overflow-hidden items-start justify-start">
-          <a href="web-development.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
-          <a href="web-development.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
+          <a href="Web-DevelopmenD"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
+          <a href="Web-DevelopmenD"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
         </div>
       </div>
       <div class="bg-mandarino px-[16px] py-[44px] lg:px-[4.167vw] lg:py-[3.056vw] flex flex-col lg:flex-row lg:items-end items-start rounded-[16px] lg:rounded-[1.667vw] gap-[44px] lg:gap-[6.944vw] card-servizi">
@@ -312,8 +321,8 @@ import Header from "../includes/Header.astro";
           </div>
         </div>
         <div class="arrow-box lg:w-1/6 flex flex-row lg:flex-col lg:items-end lg:justify-end overflow-hidden items-start justify-start">
-          <a href="digital-marketing.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
-          <a href="digital-marketing.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
+          <a href="Digital-Marketing"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
+          <a href="Digital-Marketing"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
         </div>
       </div>
       <div class="bg-giallo px-[16px] py-[44px] lg:px-[4.167vw] lg:py-[3.056vw] flex flex-col lg:flex-row lg:items-end items-start rounded-[16px] lg:rounded-[1.667vw] gap-[44px] lg:gap-[6.944vw] card-servizi">
@@ -336,8 +345,8 @@ import Header from "../includes/Header.astro";
           </div>
         </div>
         <div class="arrow-box lg:w-1/6 flex flex-row lg:flex-col lg:items-end lg:justify-end overflow-hidden items-start justify-start">
-          <a href="media-production.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
-          <a href="media-production.php"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
+          <a href="Media-Production"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-top" /></a>
+          <a href="Media-Production"><img src="img/assets/icon-arrow.svg" alt="Arrow Icon" class="w-[34px] lg:w-[4.861vw] img img-bottom" /></a>
         </div>
       </div>
     </div>
@@ -359,7 +368,7 @@ import Header from "../includes/Header.astro";
         <p class="text-bianco">Le squadre vincenti non si basano soltanto sulle qualità del singolo giocatore, ma sull'<b>affiatamento del gruppo</b>. E noi di Demia vibriamo tutti della stessa grinta. È proprio grazie a questa energia che la <b>consulenza marketing</b> come la fa Demia <i>- ma anche il caffè, il tè, la pappa al pomodoro -<br /> non la fa nessuno. Modestamente.</i></p>
       </div>
       <div>
-        <a href="" class="sub-link sub-link-dark text-bianco flex gap-[8px] lg:gap-[0.556vw]"
+        <a href="Chi-Siamo" class="sub-link sub-link-dark text-bianco flex gap-[8px] lg:gap-[0.556vw]"
           >entra nello studio
           <img src="img/assets/icon-arrow.svg" class="lg:w-[0.972vw] w-[14px]" /></a
         >
@@ -372,7 +381,7 @@ import Header from "../includes/Header.astro";
   </section>
   <section class="bg-bianco flex flex-col lg:flex-row p-body py-[150px] lg:py-[300px]" id="recensioni">
     <div class="lg:w-1/2">
-      <img src="img/assets/icon-quote.svg" alt="" />
+      <img src="img/assets/icon-quote.svg" alt="" class="w-[130px] lg:w-auto" />
       <div class="overflow-hidden -mt-11">
         <p class="text-nero title font-[700] reveal-text2">
           direttamente<br />
@@ -381,7 +390,7 @@ import Header from "../includes/Header.astro";
         </p>
       </div>
     </div>
-    <div class="lg:w-1/2">
+    <div class="lg:w-1/2 mt-[60px]">
       <div class="panels-container">
         <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
           <div>
