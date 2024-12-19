@@ -2,11 +2,10 @@
 import Layout from "../Layouts/Layout.astro";
 
 async function fetchTeams() {
-  const url = `${import.meta.env.URL_TOKEN}/api/teams?populate=*`;
-  console.log(url);
+  const url = `${import.meta.env.PUBLIC_URL_TOKEN}/api/teams?populate=*`;
   const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.AUTH_TOKEN}`
+      Authorization: `Bearer ${import.meta.env.PUBLIC_AUTH_TOKEN}`
     }
   });
   const data = await response.json();
@@ -105,7 +104,7 @@ const teams = await fetchTeams();
         </div>
       </div>
     </div>
-    <div class="block lg:hidden">
+    <!-- <div class="block lg:hidden">
       <div class="swiper swiper-task mt-[60px]">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -137,7 +136,7 @@ const teams = await fetchTeams();
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
   <div class="p-body py-[150px] lg:py-[10.417vw]">
     <p class="lg:text-[3.056vw] text-[32px] lg:leading-[3.333vw] leading-[36px] text-bianco font-[400] text-center" id="text-emote-2">
@@ -190,10 +189,10 @@ const teams = await fetchTeams();
     <div class="gap-x-[0.694vw] gap-y-[100px] lg:gap-y-[10.417vw] grid lg:grid-cols-3 grid-cols-1">
       {
         teams.length ? (
-          teams.map((team) => (
-            <div class="box-team" id={`member-${team.id}`}>
+          teams.map((team: { id: string | null | undefined; Video: { url: any }; Nome: unknown; posizione_lavorativa: unknown }) => (
+            <div class="box-team cursor-pointer" data-target={`${team.id}`}>
               <div class="team" id={team.id}>
-                <video class="team-video" src={`${import.meta.env.URL_TOKEN}${team.Video.url}`} muted playsinline loop preload="metadata" />
+                <video class="team-video" src={`${import.meta.env.PUBLIC_URL_TOKEN}${team.Video.url}`} muted playsinline loop preload="metadata" />
               </div>
               <div class="mt-[24px] lg:mt-[2.222vw]">
                 <p class="name">{team.Nome}</p>
@@ -272,58 +271,6 @@ const teams = await fetchTeams();
 
   <div class="mx-[16px] lg:mx-[2.222vw] mt-[100px] lg:mt-[10.417vw] mb-[100px] lg:mb-0 rounded-[16px] lg:rounded-[1.667vw" id="lavora-con-noi"></div>
 
-  <!-- ANIMAZIONE TESTO CIAO -->
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    const splitText = new SplitType(".ciao", { types: "chars" });
-
-    // Avvolgiamo ogni carattere in un contenitore con overflow hidden
-    splitText.chars.forEach((char) => {
-      const wrapper = document.createElement("div");
-      wrapper.style.overflow = "hidden"; // Nasconde il carattere finché non emerge
-      wrapper.style.display = "inline-block"; // Mantiene il carattere inline
-      char.parentNode.insertBefore(wrapper, char); // Inserisce il wrapper nel DOM
-      wrapper.appendChild(char); // Inserisce il carattere all'interno del wrapper
-    });
-
-    // Creiamo l'animazione per i caratteri che emergono dal basso
-    gsap.fromTo(
-      splitText.chars,
-      { translateY: "100%" }, // Inizio: i caratteri partono fuori dalla vista, nascosti dal wrapper
-      {
-        translateY: "0%", // I caratteri si muovono verso la posizione originale
-        duration: 0.8, // Durata breve per ogni carattere
-        ease: "power4.out", // Movimento fluido
-        delay: 0.5,
-        stagger: 0.05, // Ritardo tra l'animazione di ogni carattere per creare l'effetto "onda"
-        scrollTrigger: {
-          trigger: "body", // Trigger generale per l'intero testo
-          start: "top 200px", // Inizio quando il testo entra nell'80% della viewport
-          toggleActions: "play reverse play reverse" // Anima in reverse quando esce dalla viewport
-        }
-      }
-    );
-  </script>
-
-  <!-- EFFETTO HOVER PULSANTE  -->
-  <script>
-    $(function () {
-      $(".big-button")
-        .on("mouseenter", function (e) {
-          var parentOffset = $(this).offset(),
-            relX = e.pageX - parentOffset.left,
-            relY = e.pageY - parentOffset.top;
-          $(this).find("span").css({ top: relY, left: relX });
-        })
-        .on("mouseout", function (e) {
-          var parentOffset = $(this).offset(),
-            relX = e.pageX - parentOffset.left,
-            relY = e.pageY - parentOffset.top;
-          $(this).find("span").css({ top: relY, left: relX });
-        });
-    });
-  </script>
-
   <!-- ANIMAZIONE VTB -->
   <script>
     const tl = gsap.timeline();
@@ -340,135 +287,6 @@ const teams = await fetchTeams();
         { opacity: 1, duration: 3, ease: "power3.out" },
         "+=0" // Avvia subito dopo la prima animazione
       );
-  </script>
-
-  <!-- ANIMAZIONE IMMAGINI -->
-  <script>
-    ScrollTrigger.matchMedia({
-      // Configurazione per desktop (larghezza >= 768px)
-      "(min-width: 768px)": function () {
-        gsap.to("#list-about", {
-          xPercent: -130, // Sposta l'elemento a sinistra
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#list-about", // Trigger principale
-            start: "top top", // Inizio quando #list-about è in cima alla viewport
-            end: "bottom", // Fine alla fine dell'elemento
-            scrub: true, // Sincronizza con lo scroll
-            pin: true, // Fissa l'elemento
-            pinSpacing: true, // Mantiene lo spazio durante il pin
-            anticipatePin: 1, // Anticipa l'effetto pin
-            invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
-            onUpdate: (self) => {
-              gsap.ticker.lagSmoothing(1000, 16); // Minimizza lag durante scroll rapidi
-            }
-          }
-        });
-      },
-
-      // Configurazione per mobile (larghezza < 768px)
-      "(max-width: 767px)": function () {
-        gsap.to("#list-about", {
-          xPercent: -200, // Riduce il movimento per mobile
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#list-about", // Trigger principale
-            start: "top top", // Inizio alla cima della viewport
-            end: "bottom+=200", // Estende la durata per un'esperienza più fluida
-            scrub: true, // Sincronizza con lo scroll
-            pin: true, // Fissa l'elemento
-            pinSpacing: true, // Rimuove spazio extra per mobile
-            anticipatePin: 0.5, // Riduce l'anticipazione per prestazioni migliori
-            invalidateOnRefresh: true, // Ricalcola al ridimensionamento della finestra
-            onUpdate: (self) => {
-              gsap.ticker.lagSmoothing(500, 16); // Ottimizza per scroll più rapidi
-            }
-          }
-        });
-      }
-    });
-
-    // Forza un refresh di GSAP dopo il caricamento della pagina
-    window.addEventListener("load", () => {
-      ScrollTrigger.refresh(); // Ricalcola le posizioni
-    });
-  </script>
-
-  <!-- ANIAMZIONE PARAGRAFO -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Suddividi manualmente il testo in linee
-      const textElement = document.getElementById("text-emote");
-      const text = textElement.innerHTML;
-      const lines = text.split("<br>");
-
-      // Sostituisci il contenuto con gli span per le linee
-      textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
-
-      // Seleziona le linee suddivise
-      const lineElements = document.querySelectorAll("#text-emote .line");
-
-      // Animazione GSAP
-      gsap.fromTo(
-        lineElements,
-        {
-          y: 50,
-          opacity: 0
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.1,
-          ease: "power4.inOut",
-          scrollTrigger: {
-            trigger: "#text-emote",
-            start: "top 80%",
-            end: "bottom center",
-            scrub: true,
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      );
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Suddividi manualmente il testo in linee
-      const textElement = document.getElementById("text-emote-2");
-      const text = textElement.innerHTML;
-      const lines = text.split("<br>");
-
-      // Sostituisci il contenuto con gli span per le linee
-      textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
-
-      // Seleziona le linee suddivise
-      const lineElements = document.querySelectorAll("#text-emote-2 .line");
-
-      // Animazione GSAP
-      gsap.fromTo(
-        lineElements,
-        {
-          y: 50,
-          opacity: 0
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          stagger: 0.1,
-          ease: "power4.inOut",
-          scrollTrigger: {
-            trigger: "#text-emote-2",
-            start: "top 80%",
-            end: "bottom center",
-            scrub: true,
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      );
-    });
   </script>
 
   <!-- ANIMAZIONE DON'T QUIT -->
@@ -492,61 +310,6 @@ const teams = await fetchTeams();
           document.querySelectorAll("#text-dontquit span").forEach((span) => {
             span.classList.remove("text-sfumatura");
           });
-        }
-      }
-    });
-  </script>
-
-  <!-- ANIMAZIONE TIMELINE -->
-  <script>
-    // Seleziona le sezioni orizzontali
-    let sections = gsap.utils.toArray(".panel2");
-    let scrollDistance = 5000; // Durata complessiva dello scroll per questa sezione
-
-    // Seleziona l'elemento che mostrerà l'anno
-    let yearDisplay = document.getElementById("yearDisplay");
-
-    // Calcolo del valore delle ultime due cifre
-    let startYear = 2013;
-    let endYear = 2024;
-    let totalYears = endYear - startYear;
-
-    // Animazione dello scroll orizzontale delle sezioni
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#hor",
-        start: "top top",
-        end: `+=${scrollDistance}`,
-        scrub: 0.1,
-        pin: true,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          // Calcola la progressione del valore
-          let progress = self.progress;
-          let currentYear = Math.floor(startYear + progress * totalYears);
-
-          // Controlla se l'anno è cambiato
-          if (yearDisplay.textContent != currentYear) {
-            // Se l'anno è diverso, anima il movimento verso l'alto
-            gsap.fromTo(
-              yearDisplay,
-              {
-                y: 300, // Inizia da sotto
-                opacity: 0
-              },
-              {
-                y: 0, // Si sposta al centro
-                opacity: 1,
-                duration: 0.5, // Durata dell'animazione
-                ease: "power4.out" // Effetto di uscita fluido
-              }
-            );
-
-            // Aggiorna il contenuto del div con il nuovo anno
-            yearDisplay.textContent = currentYear;
-          }
         }
       }
     });
@@ -731,11 +494,6 @@ const teams = await fetchTeams();
     // Attiva lo scroll forzato sull'elemento con la classe ".popteam-content"
     forceScrollOnElement(".popteam-content");
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      forceScrollOnElement(".popteam-content");
-    });
-  </script>
 
   <!-- INTERAZIONE CON LED ONAIR -->
   <script>
@@ -755,25 +513,5 @@ const teams = await fetchTeams();
     });
   </script>
 
-  <script>
-    const swiper = new Swiper(".swiper-task", {
-      loop: false,
-      draggable: true,
-      breakpoints: {
-        0: {
-          spaceBetween: 16,
-          slidesPerView: 1.1
-        },
-        600: {
-          spaceBetween: 20,
-          slidesPerView: 3
-        },
-        1024: {
-          spaceBetween: 20,
-          slidesPerView: 3
-        }
-      }
-    });
-  </script>
-  <script src="../../public/libs/index.js"></script>
+  <script src="../../public/libs/chi-siamo.js"></script>
 </Layout>

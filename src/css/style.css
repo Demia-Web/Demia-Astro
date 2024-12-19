@@ -16,6 +16,10 @@ body {
   overflow: hidden;
 }
 
+b {
+  font-weight: 700;
+}
+
 body,
 html {
   overflow-x: hidden;

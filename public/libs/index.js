@@ -607,7 +607,7 @@ document.addEventListener("astro:page-load", () => {
   });
 });
 
-// DIVANO
+// BUTTON
 document.addEventListener("astro:page-load", () => {
   document.querySelectorAll(".big-button").forEach(function (button) {
     button.addEventListener("mouseenter", function (e) {

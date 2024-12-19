@@ -26,7 +26,7 @@ lenis.on("scroll", (e) => {
 
 var isLenisRunning = true;
 
-function toggleLenis() {
+export function toggleLenis() {
   if (lenis) {
     if (isLenisRunning) {
       lenis.stop();
