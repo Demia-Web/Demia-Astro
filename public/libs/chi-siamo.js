@@ -2,6 +2,8 @@ import SplitType from "split-type";
 
 import { toggleLenis } from "./main.js";
 
+console.log("DIO CANE");
+
 // TESTO CIAO
 document.addEventListener("astro:page-load", () => {
   const splitText = new SplitType(".ciao", { types: "chars" });

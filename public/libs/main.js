@@ -6,6 +6,8 @@ import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
+console.log("DIO FRANCO");
+
 // Lenis
 
 const lenis = new Lenis({
