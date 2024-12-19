@@ -9,15 +9,12 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
-
-import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
 <html lang="it" id="html">
   <head>
     <BaseHead title={title} description={description} />
-    <ViewTransitions />
   </head>
   <body id="body" class="bg-nero">
     <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
