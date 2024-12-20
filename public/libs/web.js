@@ -365,6 +365,67 @@ document.addEventListener("astro:page-load", () => {
   initializeAccordionSmallAnimation();
 });
 
+// ANIMAZIONE SPOSTAMENTO BLOCCHI
+document.addEventListener("astro:page-load", () => {
+  gsap.to("#img-1", {
+    x: "-30vw",
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: "#sub-intro-web",
+      start: "top center",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+  gsap.to("#img-3", {
+    x: "-50vw",
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: "#sub-intro-web",
+      start: "top center",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+  gsap.to("#img-2", {
+    x: "30vw",
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: "#sub-intro-web",
+      start: "top center",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+  gsap.to("#img-4", {
+    x: "50vw",
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: "#sub-intro-web",
+      start: "top center",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
+  // Mostra la sezione con il testo dopo che le immagini si sono spostate
+  gsap.to("#text-sub-intro-web", {
+    opacity: 1, // Fai comparire con un effetto fade-in
+    duration: 0.3, // Durata dell'animazione
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: "#text-sub-intro-web", // Collegato allo stesso trigger delle immagini
+      start: "top 50%", // Inizia quando la parte superiore della sezione è al centro
+      end: "botom top", // Fine dell'animazione
+      scrub: true, // Sincronizza l'animazione con lo scroll
+      onEnter: () => {
+        // Assicura che l'animazione si attivi solo quando l'utente scorre
+        gsap.to("#text-sub-intro-web", { opacity: 1, ease: "power4.out" });
+      }
+    }
+  });
+});
+
 document.addEventListener("astro:page-load", () => {
   gsap.to(".title-faq-1", {
     y: "-90",
