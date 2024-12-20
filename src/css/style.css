@@ -25,6 +25,20 @@ html {
   overflow-x: hidden;
 }
 
+.custom-cursor-general {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  z-index: 9000;
+  transition: transform 0.2s ease-out;
+}
+
 @layer components {
   h1 {
     @apply text-[5vw];
@@ -290,7 +304,7 @@ header p {
   border-radius: 1000px;
   font-weight: 700;
   background-color: transparent;
-  border: 0.139vw solid white;
+  border: 0.1vw solid white;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -381,7 +395,7 @@ header p {
   border-radius: 1000px;
   font-weight: 700;
   background-color: transparent;
-  border: 0.139vw solid white;
+  border: 0.1vw solid white;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -527,7 +541,7 @@ header p {
   left: 0;
   bottom: -8px;
   width: 0%;
-  height: 1px;
+  height: 0.09vw;
   background-color: #fff;
   transition: width 0.4s ease-in-out;
 }
@@ -538,13 +552,31 @@ header p {
   left: 0;
   bottom: -8px;
   width: 0%;
-  height: 1px;
+  height: 0.09vw;
   background-color: #221f20;
   transition: width 0.4s ease-in-out;
 }
 
 .sub-link:hover::after {
   width: 100%;
+}
+
+.over-linea-magenta:hover {
+  --tw-shadow: inset 0 0 0 0.139vw #e70e74 !important;
+  --tw-shadow-colored: inset 0 0 0 0.139vw var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.over-linea-arancio:hover {
+  --tw-shadow: inset 0 0 0 0.139vw #ef5740 !important;
+  --tw-shadow-colored: inset 0 0 0 0.139vw var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.over-linea-giallo:hover {
+  --tw-shadow: inset 0 0 0 0.139vw #f7a008 !important;
+  --tw-shadow-colored: inset 0 0 0 0.139vw var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 #incontra-il-team {
@@ -820,7 +852,7 @@ input[type="checkbox"] {
 }
 
 .custom-checkbox {
-  @apply p-[1.667vw] w-fit rounded-[10000px] bg-transparent cursor-pointer text-bianco border border-bianco text-[1.667vw] block;
+  @apply p-[1.667vw] w-fit rounded-[10000px] bg-transparent cursor-pointer text-bianco border-[0.139vw] border-bianco text-[1.667vw] block;
   transition: background-color 0.3s ease;
 }
 
@@ -868,13 +900,14 @@ input[type="number"] {
   width: 100%;
   color: #fff;
   font-size: 16px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 0.139vw solid #fff;
   outline: none;
   font-weight: 400;
   line-height: 64px;
   padding-bottom: 0px;
   margin-bottom: 20px;
   background-color: transparent;
+  @apply border-bianco/20;
 }
 
 .label-input {
@@ -946,14 +979,14 @@ input[type="number"]:not(:placeholder-shown) + label {
 }
 
 .accordion-item {
-  border-top: 0.069vw solid #1d1d1b;
+  border-top: 0.1vw solid #1d1d1b;
   overflow: hidden;
   position: relative;
   padding: 1.667vw 0px;
 }
 
 #accordion-container .accordion-item:last-child {
-  border-bottom: 0.069vw solid #1d1d1b;
+  border-bottom: 0.1vw solid #1d1d1b;
 }
 
 .accordion-header {
@@ -1068,6 +1101,16 @@ input[type="number"]:not(:placeholder-shown) + label {
   padding: 0.833vw 1.389vw;
   border-radius: 10000px;
   color: #fff;
+  font-size: 1.111vw;
+  font-weight: 400;
+  letter-spacing: -0.044vw;
+}
+
+.tag-nero {
+  border: 0.069vw solid #1d1d1b;
+  padding: 0.833vw 1.389vw;
+  border-radius: 10000px;
+  color: #1d1d1b;
   font-size: 1.111vw;
   font-weight: 400;
   letter-spacing: -0.044vw;
@@ -1274,7 +1317,7 @@ input[type="number"]:not(:placeholder-shown) + label {
     border-radius: 1000px;
     font-weight: 700;
     background-color: transparent;
-    border: 1px solid white;
+    border: 0.1vw solid white;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -1392,7 +1435,15 @@ input[type="number"]:not(:placeholder-shown) + label {
   }
 
   .tag {
-    border: 01px solid #fff;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.56px;
+  }
+
+  .tag-nero {
+    border: 1px solid #1d1d1b;
     padding: 12px 20px;
     font-size: 14px;
     font-weight: 400;

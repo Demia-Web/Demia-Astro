@@ -489,3 +489,19 @@ document.addEventListener("astro:page-load", () => {
     }
   });
 });
+
+document.addEventListener("astro:page-load", () => {
+  gsap.to("#paint0", {
+    attr: { gradientTransform: "rotate(360, 35, 35)" },
+    duration: 2,
+    repeat: -1,
+    ease: "linear"
+  });
+
+  gsap.to("#paint1", {
+    attr: { gradientTransform: "rotate(360, 35, 35)" },
+    duration: 2,
+    repeat: -1,
+    ease: "linear"
+  });
+});

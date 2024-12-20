@@ -3,7 +3,7 @@
     diamo vita<br class="hidden lg:block" />
     a<br class="lg:hidden block" /> qualcosa<br class="lg:hidden block" /> di unico.<br />
   </p>
-  <a href="contatti" class="relative z-40 mt-[44px] lg:mt-[3.056vw] mb-[4.236vw]">
+  <a href="/Contatti" class="relative z-40 mt-[44px] lg:mt-[3.056vw] mb-[4.236vw]">
     <button class="big-button !transition-none" data-hover="siediti con noi">
       <h3>mettiti comodo</h3>
       <span class="-z-[10]"></span>
@@ -110,5 +110,33 @@
         }
       }
     );
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll(".big-button").forEach(function (button) {
+      button.addEventListener("mouseenter", function (e) {
+        const parentOffset = this.getBoundingClientRect();
+        const relX = e.pageX - parentOffset.left - window.scrollX;
+        const relY = e.pageY - parentOffset.top - window.scrollY;
+
+        const span = this.querySelector("span");
+        if (span) {
+          span.style.top = relY + "px";
+          span.style.left = relX + "px";
+        }
+      });
+
+      button.addEventListener("mouseout", function (e) {
+        const parentOffset = this.getBoundingClientRect();
+        const relX = e.pageX - parentOffset.left - window.scrollX;
+        const relY = e.pageY - parentOffset.top - window.scrollY;
+
+        const span = this.querySelector("span");
+        if (span) {
+          span.style.top = relY + "px";
+          span.style.left = relX + "px";
+        }
+      });
+    });
   });
 </script>

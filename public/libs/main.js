@@ -167,3 +167,31 @@ document.addEventListener("astro:page-load", () => {
     });
   });
 });
+
+document.addEventListener("astro:page-load", () => {
+  const cursor = document.querySelector(".custom-cursor-general");
+
+  // Funzione per aggiornare la posizione del cursore
+  const updateCursor = (e) => {
+    gsap.to(cursor, {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.1,
+      ease: "power2.out"
+    });
+  };
+
+  // Event listener per il movimento del mouse
+  document.addEventListener("mousemove", updateCursor);
+
+  // Event listeners per l'ingrandimento del cursore sui link
+  const hoverTargets = document.querySelectorAll(".hover-target");
+  hoverTargets.forEach((target) => {
+    target.addEventListener("mouseenter", () => {
+      gsap.to(cursor, { scale: 5, duration: 0.2 });
+    });
+    target.addEventListener("mouseleave", () => {
+      gsap.to(cursor, { scale: 1, duration: 0.2 });
+    });
+  });
+});

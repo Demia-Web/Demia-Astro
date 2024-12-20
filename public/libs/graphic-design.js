@@ -49,6 +49,7 @@ document.addEventListener("astro:page-load", () => {
         scrub: true,
         pin: true,
         pinSpacing: true,
+        markers: true,
         anticipatePin: 0,
         start: "top top",
         end: "bottom",
@@ -467,5 +468,21 @@ document.addEventListener("astro:page-load", () => {
         slidesPerView: 3
       }
     }
+  });
+});
+
+document.addEventListener("astro:page-load", () => {
+  gsap.to("#paint0", {
+    attr: { gradientTransform: "rotate(360, 35, 35)" },
+    duration: 2,
+    repeat: -1,
+    ease: "linear"
+  });
+
+  gsap.to("#paint1", {
+    attr: { gradientTransform: "rotate(360, 35, 35)" },
+    duration: 2,
+    repeat: -1,
+    ease: "linear"
   });
 });

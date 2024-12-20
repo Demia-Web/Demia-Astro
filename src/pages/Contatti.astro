@@ -1,21 +1,55 @@
 ---
 import Layout from "../layout/Layout.astro";
 import Header from "../includes/Header.astro";
-
-// import nodemailer from "nodemailer";
+import nodemailer from "nodemailer";
 
 if (Astro.request.method === "POST") {
   try {
     const formData = await Astro.request.formData();
 
-    // Estrarre i dati dal FormData
     const name = formData.get("name");
     const surname = formData.get("surname");
     const email = formData.get("email");
     const phoneNumber = formData.get("phoneNumber");
     const message = formData.get("message");
 
-    // Estrarre i checkbox selezionati in un array
+    console.log("import.meta.env.SMTP_HOST ", import.meta.env.SMTP_HOST);
+    console.log("import.meta.env.SMTP_USER ", import.meta.env.SMTP_USER);
+    console.log("import.meta.env.SMTP_PASS ", import.meta.env.SMTP_PASS);
+
+    const transporter = nodemailer.createTransport({
+      host: import.meta.env.SMTP_HOST,
+      port: 25,
+      auth: {
+        user: import.meta.env.SMTP_USER,
+        pass: import.meta.env.SMTP_PASS
+      }
+    });
+
+    // 1. Email a info@demia.org con i dettagli del form
+    await transporter.sendMail({
+      from: "il.tuo.email@gmail.com",
+      to: "nicolo.bassi@demia.org",
+      subject: "Nuovo modulo inviato",
+      text: `Dettagli del modulo:\nNome: ${name}\nCognome: ${surname}\nEmail: ${email}\nTelefono: ${phoneNumber}\nMessaggio: ${message}`
+    });
+
+    // 2. Email di ringraziamento all'indirizzo dell'utente
+    await transporter.sendMail({
+      from: "il.tuo.email@gmail.com",
+      to: email,
+      subject: "Grazie per il tuo messaggio!",
+      text: `Ciao ${name},\n\nGrazie per averci contattato! Abbiamo ricevuto il tuo messaggio e ti risponderemo al più presto.\n\nCordiali saluti,\nIl team di Celyon`
+    });
+
+    // 3. Email a demiaform@demia.org con solo il nome
+    await transporter.sendMail({
+      from: "il.tuo.email@gmail.com",
+      to: "demiaform@gmail.com",
+      subject: "Nuovo contatto ricevuto",
+      text: `Nome del contatto: ${name}`
+    });
+
     const selectedCheckboxes: string[] = [];
     const checkboxFields = ["brandstrategy", "sitoweb", "e-commerce", "graphicDesign", "socialeadvertising", "consulenzamarketing"];
 
@@ -179,7 +213,7 @@ if (Astro.request.method === "POST") {
 
   <div class="flex flex-col lg:flex-row bg-bianco lg:pb-[10.417vw] lg:justify-between">
     <div class="lg:w-2/3">
-      <img src="img/page/contatti/contatti.jpg" alt="" class="h-[400px] lg:h-auto object-cover lg:rounded-none rounded-e-[16px]" />
+      <img src="img/page/contatti/contatti.webp" alt="" class="h-[400px] lg:h-auto object-cover lg:rounded-e-[1.667vw] rounded-e-[16px]" />
     </div>
     <div class="px-[16px] lg:px-0 lg:mr-[2.222vw] mt-[60px] lg:mt-0 flex flex-col lg:items-end items-start">
       <p class="text-nero lg:text-end text-[24px] lg:text-[2.222vw] font-[400] leading-[28px] lg:leading-[2.5vw]">
@@ -187,14 +221,14 @@ if (Astro.request.method === "POST") {
         55100 lucca
       </p>
       <div class="lg:w-fit lg:mt-[1.111vw] mt-[16px]">
-        <a href="" class="sub-link sub-link-light text-nero flex gap-[8px] lg:gap-[0.556vw]"
+        <a href="https://www.google.it/maps/place/Demia+Agenzia+di+Marketing,+Comunicazione,+Grafica,+Web,+Digital/@43.8374208,10.5127207,2155m/data=!3m3!1e3!4b1!5s0x12d58409b5d45263:0xa6b779545dbe3243!4m6!3m5!1s0x12d583ed236d8c95:0x97026f0f58a4c88f!8m2!3d43.8374208!4d10.515301!16s%2Fg%2F11bv5r_7lz?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" class="sub-link sub-link-light text-nero flex gap-[8px] lg:gap-[0.556vw] hover-target"
           >vedi su mappa
           <img src="img/assets/icon-arrow-dark.svg" class="lg:w-[0.972vw] w-[14px]" />
         </a>
       </div>
       <div class="mt-[44px] lg:mt-[3.056vw] lg:text-end flex flex-col gap-[1.111vw]">
         <a href="tel:+390583406479" class="text-nero lg:text-end text-[36px] lg:text-[2.222vw] font-[400] lg:leading-[2.5vw] underline">+39 0583 406479</a>
-        <a href="mailto:info@demia.org" class="text-nero lg:text-end text-[36px] lg:text-[2.222vw] font-[400] lg:leading-[2.5vw] underline">info@demia.org</a>
+        <a href="mailto:info@demia.org" class="text-nero lg:text-end text-[36px] lg:text-[2.222vw] font-[400] lg:leading-[2.5vw] underline hover-target">info@demia.org</a>
       </div>
     </div>
   </div>
@@ -209,7 +243,7 @@ if (Astro.request.method === "POST") {
       <div>
         <p class="text-[24px] lg:text-[3.056vw] leading-[28px] lg:leading-[3.333vw] text-nero mt-[60px] lg:mt-0">
           invia una mail con il cv a<br />
-          <a href="mailto:candidature@demia.org" class="text-sfumatura font-[700]">candidature@demia.org</a>
+          <a href="mailto:candidature@demia.org" class="text-sfumatura font-[700] hover-target">candidature@demia.org</a>
         </p>
         <p class="text-nero lg:mt-[2.222vw] mt-[24px]">
           Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat<br class="hidden lg:block" />

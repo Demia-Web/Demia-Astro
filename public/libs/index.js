@@ -1,5 +1,17 @@
 import SplitType from "split-type";
 
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+      history.pushState(null, null, targetId);
+    }
+  });
+});
+
 // LOADER
 document.addEventListener("astro:page-load", () => {
   // // console.log("Evento 'astro:page-load' catturato. Inizializzazione...");

@@ -4,6 +4,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+const tl = gsap.timeline();
+
 document.addEventListener("astro:page-load", () => {
   const overlay = document.getElementById("overlayportfolio");
 
@@ -302,37 +304,37 @@ document.addEventListener("astro:page-load", () => {
       }
     }
   );
-  sd;
-  // Prima animazione: comparsa del tag
-  tl.fromTo(
-    tagElement,
-    {
-      y: 50,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power4.inOut"
-    }
-  );
 
-  // Successiva animazione: comparsa del testo riga per riga
-  tl.fromTo(
-    lineElements,
-    {
-      y: 50,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.9,
-      stagger: 0.1,
-      ease: "power4.inOut"
-    }
-  );
+  // // Prima animazione: comparsa del tag
+  // tl.fromTo(
+  //   tagElement,
+  //   {
+  //     y: 50,
+  //     opacity: 0
+  //   },
+  //   {
+  //     y: 0,
+  //     opacity: 1,
+  //     duration: 1.2,
+  //     ease: "power4.inOut"
+  //   }
+  // );
+
+  // // Successiva animazione: comparsa del testo riga per riga
+  // tl.fromTo(
+  //   lineElements,
+  //   {
+  //     y: 50,
+  //     opacity: 0
+  //   },
+  //   {
+  //     y: 0,
+  //     opacity: 1,
+  //     duration: 0.9,
+  //     stagger: 0.1,
+  //     ease: "power4.inOut"
+  //   }
+  // );
 
   const splitText3 = new SplitType(".reveal-text-3", { types: "chars" });
   const testimonialAnim = document.querySelector(".testimonial-anim");
