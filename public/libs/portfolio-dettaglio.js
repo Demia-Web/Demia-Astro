@@ -257,29 +257,52 @@ document.addEventListener("astro:page-load", () => {
     );
   }, 200); // Ritardo di 2 secondi
 
-  // Suddividi manualmente il testo in linee
+  // ANIMAZIONE PARAGRAFO
   const textElement = document.getElementById("text-emote");
-  const text = textElement.innerHTML;
-  const lines = text.split("<br>");
 
-  // Sostituisci il contenuto con gli span per le linee
-  textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
+  const lines = [];
+  let currentLine = [];
 
-  // Seleziona il tag e le linee suddivise
-  const tagElement = document.querySelector(".title-tag");
-  const lineElements = document.querySelectorAll("#text-emote .line");
-
-  // Creazione di una timeline GSAP
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#text-emote",
-      start: "top 80%",
-      end: "bottom center",
-      scrub: true,
-      toggleActions: "play reverse play reverse"
+  textElement.childNodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      lines.push(currentLine.join(" ").trim());
+      currentLine = [];
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      currentLine.push(node.textContent.trim());
     }
   });
 
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" ").trim());
+  }
+
+  textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
+
+  const lineElements = document.querySelectorAll("#text-emote .line");
+
+  // Animazione GSAP
+  gsap.fromTo(
+    lineElements,
+    {
+      y: 50,
+      opacity: 0
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.9,
+      stagger: 0.1,
+      ease: "power4.inOut",
+      scrollTrigger: {
+        trigger: "#text-emote",
+        start: "top 80%",
+        end: "bottom center",
+        scrub: true,
+        toggleActions: "play reverse play reverse"
+      }
+    }
+  );
+  sd;
   // Prima animazione: comparsa del tag
   tl.fromTo(
     tagElement,

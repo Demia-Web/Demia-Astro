@@ -41,13 +41,10 @@ const teams = await fetchTeams();
       <p class="text-bianco text-[120px] lg:text-[20.833vw] -tracking-[0.625vw] font-[700] text-center z-10 ciao absolute leading-[27.778vw] -top-[5vw] left-0 right-0">ciao</p>
       <div class="rounded-[16px] lg:rounded-[1.667vw] w-full absolute top-[14vw]" id="box-ciao"></div>
     </div>
-    <div class="flex flex-col lg:flex-row items-end justify-between gap-[150px] lg:gap-[100px]">
+    <div class="flex flex-col lg:flex-row items-end justify-between gap-[150px] lg:gap-[50px]">
       <div class="lg:order-1 order-2">
-        <p class="text-bianco font-[700] title">
-          siamo il tuo<br />
-          team creativo
-        </p>
-        <p class="text-bianco font-[300] mt-[24px] lg:mt-[1.667vw]">Lorem ipsum dolor sit amet consectetur. Turpis non vulputate consequat odio in ultrices. Eget porta scelerisque eros orci eget dictum metus aliquam nulla. Eu mauris facilisi adipiscing diam faucibus fermentum. Luctus sem in vulputate nec lectus nisl vulputate fringilla in.</p>
+        <h1 class="text-bianco font-[700] title">piacere, siamo il tuo team creativo</h1>
+        <p class="text-bianco font-[300] mt-[24px] lg:mt-[1.667vw]">Te lo diciamo subito. Non siamo solo fighi. Siamo pure bravi in quello che facciamo. Ti diamo l’idea, la strutturiamo e la realizziamo, dandogli una bella spruzzata di colore e identità. Perché è così che dovrebbe essere il tuo modo di comunicare: inimitabile, uno di quelli che non se ne vedono ancora in giro. E noi siamo qui proprio per dare forma al tuo progetto.</p>
       </div>
       <img src="img/assets/icon-vtb.svg" class="lg:w-[45.139vw] w-[266px] mr-auto ml-auto lg:-mt-[13.889vw] lg:mr-[3.056vw] z-30 vtb order-1 lg:order-2" alt="" />
     </div>
@@ -219,8 +216,8 @@ const teams = await fetchTeams();
                 <video class="team-video" src={`${import.meta.env.PUBLIC_URL_TOKEN}${team.Video.url}`} muted playsinline loop preload="metadata" />
               </div>
               <div class="mt-[24px] lg:mt-[2.222vw]">
-                <p class="name">{team.Nome}</p>
-                <p class="role">{team.posizione_lavorativa}</p>
+                <p class="name lowercase">{team.Nome}</p>
+                <p class="role lowercase">{team.posizione_lavorativa}</p>
               </div>
             </div>
           ))
@@ -244,7 +241,8 @@ const teams = await fetchTeams();
       <p id="popupName" class="text-bianco font-[700] text-[36px] lg:text-[4.5vw] leading-[48px] lg:leading-[4.5vw] -tracking-[1.32px] lg:-tracking-[0.15vw]"></p>
       <p id="popupRole" class="text-bianco font-[300] text-[16px] lg:text-[1.667vw] leading-[24px] lg:leading-[1.944vw] -tracking-[0.6px] lg:-tracking-[0.05vw] mt-[4px] lg:mt-[0.278vw]"></p>
       <div class="my-[44px] lg:my-[3.056vw]">
-        <video class="team-video" src="video/home-portfolio/alpipan.mp4" playsinline autoplay muted loop preload="metadata" id="popupvideo"></video>
+        <!-- <video class="team-video" src="video/home-portfolio/alpipan.mp4" playsinline autoplay muted loop preload="metadata" id="popupvideo"></video> -->
+        <img src="" id="popupvideo" alt="" class="team-video" />
       </div>
       <p id="popupDescription" class="text-bianco text-[32px] lg:text-[3.056vw] font-[300] leading-[36px] lg:leading-[3.333vw] -tracking-[0.96px] lg:-tracking-[0.092vw]"></p>
       <div class="flex flex-row items-center justify-between mt-[24px] lg:mt-[1.667vw]">
@@ -252,7 +250,7 @@ const teams = await fetchTeams();
         <p id="popemoji" class="text-[50px] lg:text-[4.069vw]">🤙</p>
       </div>
     </div>
-    <span class="fixed top-5 flex items-center justify-center -left-[20%] lg:-left-[15%] cursor-pointer bg-[#ffffff36] backdrop-blur-xl text-bianco text-center rounded-[100%] lg:h-[5.208vw] h-[55px] lg:w-[5.208vw] w-[55px]" id="closePopup"><img src="img/assets/icon-close.svg" class="w-[20px]" /></span>
+    <span class="fixed top-5 flex items-center justify-center -left-[20%] lg:-left-[15%] cursor-pointer bg-[#ffffff36] backdrop-blur-xl text-bianco text-center rounded-[100%] lg:h-[5.208vw] h-[55px] lg:w-[5.208vw] w-[55px]" id="closePopup"><img src="img/assets/icon-close.svg" class="lg:w-[1.389vw] w-[20px]" /></span>
   </div>
 
   <!-- Overlay -->
@@ -260,9 +258,11 @@ const teams = await fetchTeams();
 
   <section class="flex flex-col items-center">
     <h3 class="text-bianco font-[700] title-small text-center">è il tuo momento</h3>
-    <div class="bg-[#333] border-[#16181C] border-2 w-[94px] lg:w-[9.722vw] h-[46px] lg:h-[4.861vw] rounded-[100px] relative mt-[21px] lg:mt-[2.222vw] transition-[400]" id="onair">
+    <div class="bg-[#333] border-[#16181C] border-2 w-[94px] lg:w-[9.722vw] h-[46px] lg:h-[4.861vw] rounded-[100px] relative mt-[21px] lg:mt-[2.222vw] transition-[400] cursor-pointer" id="onair">
       <div class="bg-[#333] drop-shadow-[0px_0px_2px_rgba(0,0,0,0.5)] border-[#16181C] border-2 h-[46px] lg:h-[4.861vw] w-[46px] lg:w-[4.861vw] rounded-[100px] absolute -left-[2px] -top-[2px]" id="circle-onair"></div>
     </div>
+    <h4 class="text-bianco font-[700] text-center lg:mt-[1.389vw] mt-[20px]">accendimi!</h4>
+
     <div class="pt-[67px] lg:pt-[6.944vw] pb-[10.417vw] relative">
       <img src="img/assets/onair.svg" alt="" class="opacity-15" id="imgonair" />
       <div class="flex flex-row top-[51%] lg:top-[46%] justify-center mx-auto left-0 right-0 -rotate-[17deg] -translate-y-1/2 absolute">

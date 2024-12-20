@@ -2,9 +2,11 @@
 import Layout from "../layout/Layout.astro";
 import Divano from "../components/Divano.astro";
 import Header from "../includes/Header.astro";
+
+import recensioniData from "../assets/recensioni.json";
 ---
 
-<Layout title="asd" description="asd">
+<Layout title="Demia" description="asd">
   <!-- <div class="contatore flex flex-row items-center justify-center">
     <div class="container-foto relative">
       <img src="img/intro/demia-agenzia-marketing-comunicazione-01.webp" alt="due ragazzi sorridenti che camminano" class="foto" />
@@ -391,51 +393,42 @@ import Header from "../includes/Header.astro";
       </div>
     </div>
     <div class="lg:w-1/2 mt-[60px]">
-      <div class="panels-container">
-        <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
-          <div>
-            <p>Oggi, in un mondo di creativi e di comunicatori, non è semplice uscire dalla massa e farsi notare. Lo spirito di Demia incarna questo traguardo. Freschezza, visione e passione in funzione del risultato.</p>
-          </div>
-          <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
-            <div>
-              <p class="author">simone morgantini</p>
-              <p class="sub-author">marketing manager</p>
+      <div class="panels-container lg:block hidden">
+        {
+          recensioniData.map((cliente) => (
+            <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
+              <div>
+                <p>{cliente.content}</p>
+              </div>
+              <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
+                <div>
+                  <p class="author">{cliente.author}</p>
+                  <p class="sub-author">{cliente.role}</p>
+                </div>
+                <img src={cliente.logo} alt="" class="h-[1.389vw]" />
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
-          <div>
-            <p>In un mercato in rapida e costante evoluzione l’immagine e la comunicazione di un’azienda hanno bisogno di professionalità e competenza. Per questo dal 2013 ci siamo affidati a Demia trovando in loro un gruppo giovane e competente, professionale ma al tempo stesso sempre disponibile, in grado di soddisfare tutte le nostre esigenze.</p>
-          </div>
-          <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
-            <div>
-              <p class="author">michele serafini</p>
-              <p class="sub-author">ceo & founder</p>
+          ))
+        }
+      </div>
+      <div id="image-stack" class="lg:hidden flex flex-col gap-[20px]">
+        {
+          recensioniData.map((cliente, index) => (
+            <div class={`panel-mobile pinned-mobile bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between ${index === recensioniData.length - 1 ? "end-pin-mobile" : ""}`}>
+              {" "}
+              <div>
+                <p>{cliente.content}</p>
+              </div>
+              <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
+                <div>
+                  <p class="author">{cliente.author}</p>
+                  <p class="sub-author">{cliente.role}</p>
+                </div>
+                <img src={cliente.logo} alt="" class="h-[20px]" />
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
-          <div>
-            <p>La nostra missione era quella di trasmettere un’emozione che racchiudesse, al contempo, la passione caratteristica di una giovane azienda e l’elevata competenza tecnica. Impresa ardua nel nostro settore, talvolta legato a rigidi schemi de passato. Demia ha fatto propria questa emozione e ha realizzato con entusiasmo e professionalità il nostro nuovo brand.</p>
-          </div>
-          <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
-            <div>
-              <p class="author">nico cinquini</p>
-              <p class="sub-author">ceo & founder</p>
-            </div>
-          </div>
-        </div>
-        <div class="panel bg-grigio py-[44px] px-[16px] lg:p-[3.056vw] rounded-[24px] lg:rounded-[1.667vw] flex flex-col justify-between">
-          <div>
-            <p>Un manipolo di creativi! Il loro punto di vista critico è stato davvero utile: ne abbiamo fatto tesoro, abbiamo imparato, migliorando. Ci hanno seguito e fatto proprie le nostre urgenze. Siamo usciti con le nuove collezioni in tempo, e non era assolutamente scontato. Demia ha lavorato davvero tanto, ed anche bene. Saremo clienti ancora a lungo…se ci vogliono naturalmente! :-)</p>
-          </div>
-          <div class="border-nero lg:border-t-[0.069vw] border-t-[1px] lg:pt-[0.694vw] pt-[8px] flex flex-row items-start justify-between mt-[75px] lg:mt-0">
-            <div>
-              <p class="author">fabio coianiz</p>
-              <p class="sub-author">ceo & founder</p>
-            </div>
-          </div>
-        </div>
+          ))
+        }
       </div>
     </div>
   </section>

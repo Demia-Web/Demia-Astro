@@ -1,6 +1,5 @@
 ---
 import Layout from "../layout/Layout.astro";
-import Divano from "../components/Divano.astro";
 import Header from "../includes/Header.astro";
 
 // import nodemailer from "nodemailer";
@@ -16,50 +15,49 @@ if (Astro.request.method === "POST") {
     const phoneNumber = formData.get("phoneNumber");
     const message = formData.get("message");
 
-    console.log(name, surname, email, phoneNumber, message);
+    // Estrarre i checkbox selezionati in un array
+    const selectedCheckboxes: string[] = [];
+    const checkboxFields = ["brandstrategy", "sitoweb", "e-commerce", "graphicDesign", "socialeadvertising", "consulenzamarketing"];
 
-    console.log("import.meta.env.SMTP_HOST ", import.meta.env.SMTP_HOST);
-    console.log("import.meta.env.SMTP_USER ", import.meta.env.SMTP_USER);
-    console.log("import.meta.env.SMTP_PASS ", import.meta.env.SMTP_PASS);
+    checkboxFields.forEach((field) => {
+      if (formData.has(field)) {
+        selectedCheckboxes.push(field);
+      }
+    });
 
-    // // Configura il trasportatore Nodemailer
-    // const transporter = nodemailer.createTransport({
-    //   host: import.meta.env.SMTP_HOST,
-    //   port: 25,
-    //   auth: {
-    //     user: import.meta.env.SMTP_USER,
-    //     pass: import.meta.env.SMTP_PASS
-    //   }
-    // });
+    const postData = {
+      data: {
+        Name: name,
+        Surname: surname,
+        Email: email,
+        Telefono: phoneNumber,
+        Messaggio: message,
+        Privacy: true,
+        Servizi: selectedCheckboxes
+      }
+    };
 
-    // // 1. Email a info@celyon.it con i dettagli del form
-    // await transporter.sendMail({
-    //   from: "il.tuo.email@gmail.com",
-    //   to: "nicolo.bassi@demia.org",
-    //   subject: "Nuovo modulo inviato",
-    //   text: `Dettagli del modulo:\nNome: ${name}\nCognome: ${surname}\nEmail: ${email}\nTelefono: ${phoneNumber}\nMessaggio: ${message}`
-    // });
+    console.log("postData");
+    console.log(postData);
 
-    // // 2. Email di ringraziamento all'indirizzo dell'utente
-    // await transporter.sendMail({
-    //   from: "il.tuo.email@gmail.com",
-    //   to: email,
-    //   subject: "Grazie per il tuo messaggio!",
-    //   text: `Ciao ${name},\n\nGrazie per averci contattato! Abbiamo ricevuto il tuo messaggio e ti risponderemo al più presto.\n\nCordiali saluti,\nIl team di Celyon`
-    // });
+    const response = await fetch(`${import.meta.env.PUBLIC_URL_TOKEN}/api/forms`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.PUBLIC_AUTH_TOKEN}`
+      },
+      body: JSON.stringify(postData)
+    });
+    if (!response.ok) {
+      throw new Error(`Errore API: ${response.statusText}`);
+    }
 
-    // // 3. Email a demiaform@demia.org con solo il nome
-    // await transporter.sendMail({
-    //   from: "il.tuo.email@gmail.com",
-    //   to: "demiaform@gmail.com",
-    //   subject: "Nuovo contatto ricevuto",
-    //   text: `Nome del contatto: ${name}`
-    // });
+    const responseData = await response.json();
+    console.log("Risposta API:", responseData);
 
-    console.log("Tutte le email inviate con successo.");
+    console.log("Tutte le operazioni completate con successo.");
   } catch (error) {
     if (error instanceof Error) {
-      console.error("Errore nell'invio delle email: ", error.message);
+      console.error("Errore nell'elaborazione del form: ", error.message);
     }
   }
 }
@@ -91,7 +89,7 @@ if (Astro.request.method === "POST") {
   <section class="p-body py-[100px] lg:py-[10.417vw] lg:w-2/3">
     <p class="title-small font-[700] text-bianco">mi interessa...</p>
     <div class="pt-[24px] lg:pt-[3.056vw]">
-      <form id="contact-form" action="" method="post">
+      <form id="contactForm" action="" method="POST">
         <div class="flex lg:flex-col flex-wrap gap-[1.667vw]">
           <div class="flex lg:flex-row flex-wrap gap-[1.667vw]">
             <div>
@@ -108,7 +106,7 @@ if (Astro.request.method === "POST") {
             </div>
             <div>
               <input type="checkbox" id="servizio4" name="graphicDesign" />
-              <label class="custom-checkbox" for="servizio4">graphicdesign</label>
+              <label class="custom-checkbox" for="servizio4">graphic design</label>
             </div>
           </div>
           <div class="flex lg:flex-row flex-wrap gap-[1.667vw]">

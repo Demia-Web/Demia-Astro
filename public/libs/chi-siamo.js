@@ -89,19 +89,28 @@ document.addEventListener("astro:page-load", () => {
 // ANIMAZIONE PARAGRAFO
 document.addEventListener("astro:page-load", () => {
   const textElement = document.getElementById("text-emote");
-  // console.log("textElement " + textElement);
-  const text = textElement.innerHTML;
-  const lines = text.split("<br>");
-  // console.log("lines , " + lines.length);
-  // console.log(lines);
 
-  // Sostituisci il contenuto con gli span per le linee
+  const lines = [];
+  let currentLine = [];
+
+  textElement.childNodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      lines.push(currentLine.join(" ").trim());
+      currentLine = [];
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      currentLine.push(node.textContent.trim());
+    }
+  });
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" ").trim());
+  }
+
   textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
-  // console.log(textElement);
 
-  // Seleziona le linee suddivise
   const lineElements = document.querySelectorAll("#text-emote .line");
 
+  // Animazione GSAP
   gsap.fromTo(
     lineElements,
     {
@@ -127,16 +136,27 @@ document.addEventListener("astro:page-load", () => {
 
 // ANIMAZIONE PARAGRAFO 2
 document.addEventListener("astro:page-load", () => {
-  // Suddividi manualmente il testo in linee
-  const textElement = document.getElementById("text-emote-2");
-  const text = textElement.innerHTML;
-  const lines = text.split("<br>");
+  const textElement = document.getElementById("text-emote2");
 
-  // Sostituisci il contenuto con gli span per le linee
+  const lines = [];
+  let currentLine = [];
+
+  textElement.childNodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      lines.push(currentLine.join(" ").trim());
+      currentLine = [];
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      currentLine.push(node.textContent.trim());
+    }
+  });
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" ").trim());
+  }
+
   textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
 
-  // Seleziona le linee suddivise
-  const lineElements = document.querySelectorAll("#text-emote-2 .line");
+  const lineElements = document.querySelectorAll("#text-emote2 .line");
 
   // Animazione GSAP
   gsap.fromTo(
@@ -152,7 +172,7 @@ document.addEventListener("astro:page-load", () => {
       stagger: 0.1,
       ease: "power4.inOut",
       scrollTrigger: {
-        trigger: "#text-emote-2",
+        trigger: "#text-emote2",
         start: "top 80%",
         end: "bottom center",
         scrub: true,
@@ -402,7 +422,7 @@ document.addEventListener("astro:page-load", () => {
       document.getElementById("popupDescription").innerText = member.Descrizione_corta;
       document.getElementById("popupDescription2").innerText = member.descrizione_lunga;
       document.getElementById("popemoji").innerText = member.Emoji;
-      document.getElementById("popupvideo").src = `${import.meta.env.PUBLIC_URL_TOKEN}${member.Video.url}`;
+      document.getElementById("popupvideo").src = `/img/team/${member.Nome.split(" ")[0]}.webp`;
 
       const popup = document.getElementById("teamPopup");
       const overlay = document.getElementById("overlay");
@@ -455,6 +475,11 @@ document.addEventListener("astro:page-load", () => {
     ledonair.classList.toggle("shadow-ledon");
     ledonair.classList.toggle("shadow-ledoff");
     ledonair.classList.toggle("flicker");
+
+    setTimeout(() => {
+      ledonair.classList.toggle("flicker");
+      ledonair.classList.toggle("on");
+    }, 1500);
   });
 });
 

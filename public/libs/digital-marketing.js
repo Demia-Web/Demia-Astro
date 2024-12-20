@@ -16,18 +16,29 @@ document.addEventListener("astro:page-load", () => {
     duration: 20 // Durata, puoi regolare in base alla velocità desiderata
   });
 });
-// ANIAMZIONE PARAGRAFO
 
+// ANIMAZIONE PARAGRAFO
 document.addEventListener("astro:page-load", () => {
-  // Suddividi manualmente il testo in linee
   const textElement = document.getElementById("text-emote");
-  const text = textElement.innerHTML;
-  const lines = text.split("<br>");
 
-  // Sostituisci il contenuto con gli span per le linee
+  const lines = [];
+  let currentLine = [];
+
+  textElement.childNodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      lines.push(currentLine.join(" ").trim());
+      currentLine = [];
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      currentLine.push(node.textContent.trim());
+    }
+  });
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" ").trim());
+  }
+
   textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
 
-  // Seleziona le linee suddivise
   const lineElements = document.querySelectorAll("#text-emote .line");
 
   // Animazione GSAP
@@ -112,16 +123,28 @@ document.addEventListener("astro:page-load", () => {
   });
 });
 
+// ANIMAZIONE PARAGRAFO
 document.addEventListener("astro:page-load", () => {
-  // Suddividi manualmente il testo in linee
   const textElement = document.getElementById("text-emote2");
-  const text = textElement.innerHTML;
-  const lines = text.split("<br>");
 
-  // Sostituisci il contenuto con gli span per le linee
+  const lines = [];
+  let currentLine = [];
+
+  textElement.childNodes.forEach((node) => {
+    if (node.nodeName === "BR") {
+      lines.push(currentLine.join(" ").trim());
+      currentLine = [];
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      currentLine.push(node.textContent.trim());
+    }
+  });
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine.join(" ").trim());
+  }
+
   textElement.innerHTML = lines.map((line) => `<span class="line">${line}</span>`).join("");
 
-  // Seleziona le linee suddivise
   const lineElements = document.querySelectorAll("#text-emote2 .line");
 
   // Animazione GSAP
@@ -139,7 +162,7 @@ document.addEventListener("astro:page-load", () => {
       ease: "power4.inOut",
       scrollTrigger: {
         trigger: "#text-emote2",
-        start: "top 50%",
+        start: "top 80%",
         end: "bottom center",
         scrub: true,
         toggleActions: "play reverse play reverse"

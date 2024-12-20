@@ -802,6 +802,11 @@ html.popup-open {
   animation: flicker 1.5s alternate;
 }
 
+#ledonair.on {
+  opacity: 1;
+  box-shadow: 0 0 20px #fb72bd, 0 0 30px #fb72bd, inset 0 0 58px #fb72bd;
+}
+
 .title-section {
   @apply font-[700] text-[8.333vw] leading-[8.611vw] -tracking-[0.25vw];
 }
@@ -1471,5 +1476,9 @@ input[type="number"]:not(:placeholder-shown) + label {
 
   .changeword div {
     height: 56px;
+  }
+
+  #video-home .video {
+    scale: 0.6;
   }
 }

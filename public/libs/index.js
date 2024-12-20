@@ -337,8 +337,8 @@ document.addEventListener("astro:page-load", () => {
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: "#prevideo",
-          start: "top", // Cambia il valore di start per mobile
-          end: "bottom center", // Modifica il punto finale
+          start: "top +50%", // Cambia il valore di start per mobile
+          end: "bottom -50%", // Modifica il punto finale
           scrub: true,
           pin: false, // Disattiva il pin su mobile
           onLeave: () => {
@@ -717,4 +717,21 @@ document.addEventListener("astro:page-load", () => {
       ease: "none"
     });
   }
+});
+
+document.addEventListener("astro:page-load", () => {
+  const pinnedPanels = gsap.utils.toArray(".panel-mobile.pinned-mobile");
+
+  pinnedPanels.forEach((panel, i) => {
+    ScrollTrigger.create({
+      trigger: panel,
+      start: "top-=50px top",
+      endTrigger: ".end-pin-mobile",
+      end: "top-=50px top",
+      pin: true,
+      pinSpacing: false,
+      markers: false,
+      id: i + 1
+    });
+  });
 });
